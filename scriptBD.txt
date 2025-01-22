@@ -1,5 +1,24 @@
+
+IF OBJECT_ID('PedidoPizza', 'U') IS NOT NULL
+    DROP TABLE PedidoPizza;
+
+IF OBJECT_ID('Pizza_Ingredientes', 'U') IS NOT NULL
+    DROP TABLE Pizza_Ingredientes;
+
+IF OBJECT_ID('Pedido', 'U') IS NOT NULL
+    DROP TABLE Pedido;
+
+IF OBJECT_ID('Usuarios', 'U') IS NOT NULL
+    DROP TABLE Usuarios;
+
+IF OBJECT_ID('Pizza', 'U') IS NOT NULL
+    DROP TABLE Pizza;
+
+IF OBJECT_ID('Ingredientes', 'U') IS NOT NULL
+    DROP TABLE Ingredientes;
+
 CREATE TABLE Usuarios (
-    ID INT PRIMARY KEY,
+    ID INT IDENTITY(1,1) PRIMARY KEY,
     Nombre VARCHAR(50) NOT NULL,
     Apellido1 VARCHAR(50) NOT NULL,
     Apellido2 VARCHAR(50) NULL,
@@ -11,7 +30,7 @@ CREATE TABLE Usuarios (
 );
 
 CREATE TABLE Pedido (
-    ID_Pedido INT PRIMARY KEY,
+    ID_Pedido INT IDENTITY(1,1) PRIMARY KEY,
     id_usuario INT NOT NULL,
     Fecha DATE NOT NULL,
     PrecioFinal DECIMAL(10, 2) NOT NULL,
@@ -20,8 +39,9 @@ CREATE TABLE Pedido (
 );
 
 CREATE TABLE Pizza (
-    ID INT PRIMARY KEY,
-    Nombre VARCHAR(50) NOT NULL
+    ID INT IDENTITY(1,1) PRIMARY KEY,
+    Nombre VARCHAR(50) NOT NULL,
+    Tamano VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE Ingredientes (
@@ -32,7 +52,7 @@ CREATE TABLE Ingredientes (
 );
 
 CREATE TABLE PedidoPizza (
-    Id_PedidoPizza INT PRIMARY KEY,
+    Id_PedidoPizza INT IDENTITY(1,1) PRIMARY KEY,
     Id_Pedido INT NOT NULL,
     Id_Pizza INT NOT NULL,
     Cantidad INT NOT NULL,
@@ -41,7 +61,7 @@ CREATE TABLE PedidoPizza (
 );
 
 CREATE TABLE Pizza_Ingredientes (
-    Id_tabla INT PRIMARY KEY,
+    Id_tabla INT IDENTITY(1,1) PRIMARY KEY,
     Id_pizza INT NOT NULL,
     Id_ingredientes INT NOT NULL,
     FOREIGN KEY (Id_pizza) REFERENCES Pizza(ID),
