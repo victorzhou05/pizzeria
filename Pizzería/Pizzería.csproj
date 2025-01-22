@@ -96,6 +96,9 @@
     <EmbeddedResource Include="Vistas\Pizzeria.resx">
       <DependentUpon>Pizzeria.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Register.resx">
+      <DependentUpon>Register.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
