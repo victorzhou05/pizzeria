@@ -1,0 +1,49 @@
+CREATE TABLE Usuarios (
+    ID INT PRIMARY KEY,
+    Nombre VARCHAR(50) NOT NULL,
+    Apellido1 VARCHAR(50) NOT NULL,
+    Apellido2 VARCHAR(50) NULL,
+    Correo VARCHAR(100) NOT NULL,
+    Telefono VARCHAR(15) NOT NULL,
+    Direccion VARCHAR(100) NOT NULL,
+    Contrasena VARCHAR(50) NOT NULL,
+    Rol VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE Pedido (
+    ID_Pedido INT PRIMARY KEY,
+    id_usuario INT NOT NULL,
+    Fecha DATE NOT NULL,
+    PrecioFinal DECIMAL(10, 2) NOT NULL,
+    Estado VARCHAR(20) NOT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES Usuarios(ID)
+);
+
+CREATE TABLE Pizza (
+    ID INT PRIMARY KEY,
+    Nombre VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Ingredientes (
+    Id_Ingrediente INT PRIMARY KEY,
+    Nombre_ingrediente VARCHAR(50) NOT NULL,
+    Imagen VARCHAR(255) NOT NULL,
+    Precio_ingrediente DECIMAL(10, 2) NOT NULL
+);
+
+CREATE TABLE PedidoPizza (
+    Id_PedidoPizza INT PRIMARY KEY,
+    Id_Pedido INT NOT NULL,
+    Id_Pizza INT NOT NULL,
+    Cantidad INT NOT NULL,
+    FOREIGN KEY (Id_Pedido) REFERENCES Pedido(ID_Pedido),
+    FOREIGN KEY (Id_Pizza) REFERENCES Pizza(ID)
+);
+
+CREATE TABLE Pizza_Ingredientes (
+    Id_tabla INT PRIMARY KEY,
+    Id_pizza INT NOT NULL,
+    Id_ingredientes INT NOT NULL,
+    FOREIGN KEY (Id_pizza) REFERENCES Pizza(ID),
+    FOREIGN KEY (Id_ingredientes) REFERENCES Ingredientes(Id_Ingrediente)
+);
