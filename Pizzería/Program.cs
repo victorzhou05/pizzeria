@@ -19,7 +19,7 @@ namespace Pizzería
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CrearPizza());
+            Application.Run(new Register());
         }
     }
 }
