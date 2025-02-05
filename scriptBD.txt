@@ -24,7 +24,6 @@ CREATE TABLE Usuarios (
     Apellido2 VARCHAR(50) NULL,
     Correo VARCHAR(100) NOT NULL UNIQUE,
     Telefono VARCHAR(15) NOT NULL,
-    Direccion VARCHAR(100) NOT NULL,
     Contrasena VARCHAR(50) NOT NULL,
     Rol VARCHAR(20) NOT NULL
 );
@@ -34,13 +33,14 @@ CREATE TABLE Pedido (
     id_usuario INT NOT NULL,
     Fecha DATE NOT NULL,
     PrecioFinal DECIMAL(10, 2) NOT NULL,
+    Direccion VARCHAR(100) NOT NULL,
     Estado VARCHAR(20) NOT NULL,
     FOREIGN KEY (id_usuario) REFERENCES Usuarios(ID)
 );
 
 CREATE TABLE Pizza (
     ID INT IDENTITY(1,1) PRIMARY KEY,
-    Nombre VARCHAR(50) NOT NULL,
+    Nombre VARCHAR(50) NOT NULL UNIQUE,
     Tamano VARCHAR(20) NOT NULL
 );
 
@@ -84,5 +84,7 @@ INSERT INTO Ingredientes (Nombre_ingrediente, Precio_ingrediente) VALUES ('Champ
 INSERT INTO Ingredientes (Nombre_ingrediente, Precio_ingrediente) VALUES ('Cebolla', 2.1)
 INSERT INTO Ingredientes (Nombre_ingrediente, Precio_ingrediente) VALUES ('Aceitunas', 2.5)
 INSERT INTO Ingredientes (Nombre_ingrediente, Precio_ingrediente) VALUES ('Pimieneto', 1.1)
+
+INSERT INTO Usuarios (Nombre,Apellido1,Apellido2,Correo,Telefono,Direccion,Contrasena,Rol) VALUES('admin','admin','admin','admin@gmail.com','123456789','No hay direccion','admin','admin')
 
 
