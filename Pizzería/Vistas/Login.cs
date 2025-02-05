@@ -46,24 +46,27 @@ namespace Pizzería.Vistas
 
         private void Login_SizeChanged(object sender, EventArgs e)
         {
+            int anchoVentana = this.ClientSize.Width;
+            int altoVentana = this.ClientSize.Height;
+
+
             if (WindowState == FormWindowState.Maximized)
             {
-                // Ajustar la posición del panel cuando está maximizado
-                panel1.Location = new Point(300, 350);
-                //panel1.Size = new Size(250, 250);
-                btnLogin.Location = new Point(400, 480);
-                btnCerrarLogin.Location = new Point(1050, 25);
-                btnMinMaxLogin.Location = new Point(1000, 25);
-                btnMinimizarLogin.Location = new Point(950, 25);
+
+                panel1.Location = new Point(anchoVentana * 23 / 100, altoVentana * 38 / 100);
+                btnLogin.Location = new Point(anchoVentana * 30 / 100, altoVentana * 50 / 100);
+                btnCerrarLogin.Location = new Point(anchoVentana * 90 / 100, altoVentana * 5 / 100);
+                btnMinMaxLogin.Location = new Point(anchoVentana * 85 / 100, altoVentana * 5 / 100);
+                btnMinimizarLogin.Location = new Point(anchoVentana * 80 / 100, altoVentana * 5 / 100);
             }
             else
             {
-                // Puedes cambiar el comportamiento si no está maximizado
-                panel1.Location = new Point(160, 180); // Ubicación en tamaño normal
-                btnLogin.Location = new Point(270, 290);
-                btnCerrarLogin.Location = new Point(750, 10);
-                btnMinMaxLogin.Location = new Point(700, 10);
-                btnMinimizarLogin.Location = new Point(650, 10);
+
+                panel1.Location = new Point(anchoVentana * 20 / 100, altoVentana * 40 / 100);
+                btnLogin.Location = new Point(anchoVentana * 32 / 100, altoVentana * 60 / 100);
+                btnCerrarLogin.Location = new Point(anchoVentana * 90 / 100, altoVentana * 5 / 100);
+                btnMinMaxLogin.Location = new Point(anchoVentana * 85 / 100, altoVentana * 5 / 100);
+                btnMinimizarLogin.Location = new Point(anchoVentana * 80 / 100, altoVentana * 5 / 100);
             }
         }
 
