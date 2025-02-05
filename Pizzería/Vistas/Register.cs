@@ -71,26 +71,34 @@ namespace Pizzería.Vistas
 
         private void Register_SizeChanged(object sender, EventArgs e)
         {
-            if (WindowState == FormWindowState.Maximized)
-            {
-                // Ajustar la posición del panel cuando está maximizado
-                panel1.Location = new Point(300, 300); // Cambia esto a la ubicación que prefieras
-                btnRegistrarse.Location = new Point(400, 480);
-                linkLabelYaTienesCuenta.Location = new Point(300, 470);
-                btnCerrar.Location = new Point(1050, 25);
-                btnMinMax.Location = new Point(1000, 25);
-                btnMinimizar.Location = new Point(950, 25);
-            }
-            else
-            {
-                // Puedes cambiar el comportamiento si no está maximizado
-                panel1.Location = new Point(160, 150); // Ubicación en tamaño normal
-                btnRegistrarse.Location = new Point(310, 310);
-                linkLabelYaTienesCuenta.Location = new Point(200, 310);
-                btnCerrar.Location = new Point(750, 10);
-                btnMinMax.Location = new Point(700, 10);
-                btnMinimizar.Location = new Point(650, 10);
-            }
+            
+                
+                int anchoVentana = this.ClientSize.Width;
+                int altoVentana = this.ClientSize.Height;
+
+               
+                if (WindowState == FormWindowState.Maximized)
+                {
+                    
+                    panel1.Location = new Point(anchoVentana * 23 / 100, altoVentana * 40 / 100);
+                    btnRegistrarse.Location = new Point(anchoVentana * 35 / 100, altoVentana * 55 / 100);
+                    linkLabelYaTienesCuenta.Location = new Point(anchoVentana * 23 / 100, altoVentana * 55 / 100);
+                    btnCerrar.Location = new Point(anchoVentana * 90 / 100, altoVentana * 5 / 100);
+                    btnMinMax.Location = new Point(anchoVentana * 85 / 100, altoVentana * 5 / 100);
+                    btnMinimizar.Location = new Point(anchoVentana * 80 / 100, altoVentana * 5 / 100);
+                }
+                else
+                {
+                    
+                    panel1.Location = new Point(anchoVentana * 20 / 100, altoVentana * 35 / 100);
+                    btnRegistrarse.Location = new Point(anchoVentana * 38 / 100, altoVentana * 67 / 100);
+                    linkLabelYaTienesCuenta.Location = new Point(anchoVentana * 25 / 100, altoVentana * 67 / 100);
+                    btnCerrar.Location = new Point(anchoVentana * 90 / 100, altoVentana * 5 / 100);
+                    btnMinMax.Location = new Point(anchoVentana * 85 / 100, altoVentana * 5 / 100);
+                    btnMinimizar.Location = new Point(anchoVentana * 80 / 100, altoVentana * 5 / 100);
+                }
+            
+
         }
 
         private void tbTelefono_Enter(object sender, EventArgs e)
@@ -157,25 +165,7 @@ namespace Pizzería.Vistas
             }
         }
 
-        private void tbDireccion_Enter(object sender, EventArgs e)
-        {
-            if (tbDireccion.Text == "Direccion")
-            {
-                tbDireccion.Text = "";
-                tbDireccion.ForeColor = Color.Gray;
-                tbDireccion.Font = new Font("MV boli", 14);
-            }
-        }
-
-        private void tbDireccion_Leave(object sender, EventArgs e)
-        {
-            if (tbDireccion.Text == "")
-            {
-                tbDireccion.Text = "Direccion";
-                tbDireccion.ForeColor = Color.Gray;
-                tbDireccion.Font = new Font("MV boli", 14);
-            }
-        }
+      
 
        
 
@@ -185,7 +175,7 @@ namespace Pizzería.Vistas
             String apellidos = tbApellidos.Text.ToString();
             String[] apellidosSeparados = apellidos.Split(' ');
             Usuario user = new Usuario();
-            if (tbNombre.Text == "" || tbApellidos.Text == "" || tbContraseña.Text == "" || tbDireccion.Text == "" || tbMail.Text == "" || tbTelefono.Text == ""|| tbNombre.Text == "Nombre" || tbApellidos.Text == "Apellidos" || tbContraseña.Text == "Contraseña" || tbDireccion.Text == "Direccion" || tbMail.Text == "Correo Electronico" || tbTelefono.Text == "Telefono")
+            if (tbNombre.Text == "" || tbApellidos.Text == "" || tbContraseña.Text == ""  || tbMail.Text == "" || tbTelefono.Text == ""|| tbNombre.Text == "Nombre" || tbApellidos.Text == "Apellidos" || tbContraseña.Text == "Contraseña" ||  tbMail.Text == "Correo Electronico" || tbTelefono.Text == "Telefono")
             {
                 MessageBox.Show("Faltan datos a introducir");
                 error = true;
@@ -221,7 +211,7 @@ namespace Pizzería.Vistas
                 conexion.Close();
             user.correo = tbMail.Text.ToString();
             user.telefono = tbTelefono.Text;
-            user.direccion = tbDireccion.Text.ToString();
+            
 
             conexion.Open();
             comando.Connection = conexion;
@@ -235,7 +225,7 @@ namespace Pizzería.Vistas
             comando.Parameters.AddWithValue("@Contrasena", user.contraseña);
             comando.Parameters.AddWithValue("@Correo", user.correo);
             comando.Parameters.AddWithValue("@Telefono", user.telefono);
-            comando.Parameters.AddWithValue("@Direccion", user.direccion);
+            comando.Parameters.AddWithValue("@Direccion", null);
             comando.Parameters.AddWithValue("@Rol", "User");
 
             comando.ExecuteNonQuery();

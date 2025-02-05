@@ -35,7 +35,6 @@
             this.tbTelefono = new System.Windows.Forms.RichTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tbContraseña = new System.Windows.Forms.TextBox();
-            this.tbDireccion = new System.Windows.Forms.RichTextBox();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape6 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineShape5 = new Microsoft.VisualBasic.PowerPacks.LineShape();
@@ -118,7 +117,6 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(228)))), ((int)(((byte)(194)))));
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panel1.Controls.Add(this.tbContraseña);
-            this.panel1.Controls.Add(this.tbDireccion);
             this.panel1.Controls.Add(this.tbNombre);
             this.panel1.Controls.Add(this.tbApellidos);
             this.panel1.Controls.Add(this.tbTelefono);
@@ -126,7 +124,7 @@
             this.panel1.Controls.Add(this.shapeContainer1);
             this.panel1.Location = new System.Drawing.Point(171, 148);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(281, 156);
+            this.panel1.Size = new System.Drawing.Size(281, 124);
             this.panel1.TabIndex = 11;
             // 
             // tbContraseña
@@ -144,20 +142,6 @@
             this.tbContraseña.Enter += new System.EventHandler(this.tbContraseña_Enter);
             this.tbContraseña.Leave += new System.EventHandler(this.tbContraseña_Leave);
             // 
-            // tbDireccion
-            // 
-            this.tbDireccion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(228)))), ((int)(((byte)(194)))));
-            this.tbDireccion.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbDireccion.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbDireccion.ForeColor = System.Drawing.Color.Gray;
-            this.tbDireccion.Location = new System.Drawing.Point(5, 120);
-            this.tbDireccion.Name = "tbDireccion";
-            this.tbDireccion.Size = new System.Drawing.Size(275, 34);
-            this.tbDireccion.TabIndex = 15;
-            this.tbDireccion.Text = "Direccion";
-            this.tbDireccion.Enter += new System.EventHandler(this.tbDireccion_Enter);
-            this.tbDireccion.Leave += new System.EventHandler(this.tbDireccion_Leave);
-            // 
             // shapeContainer1
             // 
             this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
@@ -170,7 +154,7 @@
             this.lineShape3,
             this.lineShape2,
             this.lineShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(281, 156);
+            this.shapeContainer1.Size = new System.Drawing.Size(281, 124);
             this.shapeContainer1.TabIndex = 11;
             this.shapeContainer1.TabStop = false;
             // 
@@ -328,7 +312,6 @@
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape1;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape4;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape3;
-        private System.Windows.Forms.RichTextBox tbDireccion;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape6;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape5;
         private System.Windows.Forms.Button btnRegistrarse;
