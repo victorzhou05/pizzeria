@@ -34,6 +34,7 @@
             this.tbMail = new System.Windows.Forms.RichTextBox();
             this.tbTelefono = new System.Windows.Forms.RichTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tbContraseña = new System.Windows.Forms.TextBox();
             this.tbDireccion = new System.Windows.Forms.RichTextBox();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape6 = new Microsoft.VisualBasic.PowerPacks.LineShape();
@@ -46,7 +47,7 @@
             this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.btnMinMax = new System.Windows.Forms.PictureBox();
-            this.tbContraseña = new System.Windows.Forms.TextBox();
+            this.linkLabelYaTienesCuenta = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
@@ -91,7 +92,7 @@
             this.tbMail.Location = new System.Drawing.Point(3, 80);
             this.tbMail.Name = "tbMail";
             this.tbMail.Size = new System.Drawing.Size(275, 34);
-            this.tbMail.TabIndex = 8;
+            this.tbMail.TabIndex = 14;
             this.tbMail.Text = "Correo Electronico";
             this.tbMail.Enter += new System.EventHandler(this.tbMail_Enter);
             this.tbMail.Leave += new System.EventHandler(this.tbMail_Leave);
@@ -113,7 +114,6 @@
             // panel1
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.panel1.AutoSize = true;
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(228)))), ((int)(((byte)(194)))));
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
@@ -124,10 +124,25 @@
             this.panel1.Controls.Add(this.tbTelefono);
             this.panel1.Controls.Add(this.tbMail);
             this.panel1.Controls.Add(this.shapeContainer1);
-            this.panel1.Location = new System.Drawing.Point(163, 148);
+            this.panel1.Location = new System.Drawing.Point(171, 148);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(289, 157);
+            this.panel1.Size = new System.Drawing.Size(281, 156);
             this.panel1.TabIndex = 11;
+            // 
+            // tbContraseña
+            // 
+            this.tbContraseña.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(228)))), ((int)(((byte)(194)))));
+            this.tbContraseña.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbContraseña.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbContraseña.ForeColor = System.Drawing.Color.Gray;
+            this.tbContraseña.Location = new System.Drawing.Point(118, 40);
+            this.tbContraseña.Multiline = true;
+            this.tbContraseña.Name = "tbContraseña";
+            this.tbContraseña.Size = new System.Drawing.Size(160, 34);
+            this.tbContraseña.TabIndex = 13;
+            this.tbContraseña.Text = "Contraseña";
+            this.tbContraseña.Enter += new System.EventHandler(this.tbContraseña_Enter);
+            this.tbContraseña.Leave += new System.EventHandler(this.tbContraseña_Leave);
             // 
             // tbDireccion
             // 
@@ -135,10 +150,10 @@
             this.tbDireccion.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbDireccion.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbDireccion.ForeColor = System.Drawing.Color.Gray;
-            this.tbDireccion.Location = new System.Drawing.Point(3, 120);
+            this.tbDireccion.Location = new System.Drawing.Point(5, 120);
             this.tbDireccion.Name = "tbDireccion";
             this.tbDireccion.Size = new System.Drawing.Size(275, 34);
-            this.tbDireccion.TabIndex = 12;
+            this.tbDireccion.TabIndex = 15;
             this.tbDireccion.Text = "Direccion";
             this.tbDireccion.Enter += new System.EventHandler(this.tbDireccion_Enter);
             this.tbDireccion.Leave += new System.EventHandler(this.tbDireccion_Leave);
@@ -155,7 +170,7 @@
             this.lineShape3,
             this.lineShape2,
             this.lineShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(289, 157);
+            this.shapeContainer1.Size = new System.Drawing.Size(281, 156);
             this.shapeContainer1.TabIndex = 11;
             this.shapeContainer1.TabStop = false;
             // 
@@ -213,10 +228,10 @@
             this.btnRegistrarse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(228)))), ((int)(((byte)(194)))));
             this.btnRegistrarse.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrarse.ForeColor = System.Drawing.Color.Gray;
-            this.btnRegistrarse.Location = new System.Drawing.Point(281, 308);
+            this.btnRegistrarse.Location = new System.Drawing.Point(303, 307);
             this.btnRegistrarse.Name = "btnRegistrarse";
             this.btnRegistrarse.Size = new System.Drawing.Size(125, 33);
-            this.btnRegistrarse.TabIndex = 12;
+            this.btnRegistrarse.TabIndex = 0;
             this.btnRegistrarse.Text = "Registrarse";
             this.btnRegistrarse.UseVisualStyleBackColor = false;
             this.btnRegistrarse.Click += new System.EventHandler(this.btnRegistrarse_Click);
@@ -260,20 +275,18 @@
             this.btnMinMax.TabStop = false;
             this.btnMinMax.Click += new System.EventHandler(this.btnMinMax_Click);
             // 
-            // tbContraseña
+            // linkLabelYaTienesCuenta
             // 
-            this.tbContraseña.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(228)))), ((int)(((byte)(194)))));
-            this.tbContraseña.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbContraseña.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbContraseña.ForeColor = System.Drawing.Color.Gray;
-            this.tbContraseña.Location = new System.Drawing.Point(118, 40);
-            this.tbContraseña.Multiline = true;
-            this.tbContraseña.Name = "tbContraseña";
-            this.tbContraseña.Size = new System.Drawing.Size(160, 34);
-            this.tbContraseña.TabIndex = 13;
-            this.tbContraseña.Text = "Contraseña";
-            this.tbContraseña.Enter += new System.EventHandler(this.tbContraseña_Enter);
-            this.tbContraseña.Leave += new System.EventHandler(this.tbContraseña_Leave);
+            this.linkLabelYaTienesCuenta.AutoSize = true;
+            this.linkLabelYaTienesCuenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(228)))), ((int)(((byte)(194)))));
+            this.linkLabelYaTienesCuenta.Font = new System.Drawing.Font("MV Boli", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabelYaTienesCuenta.Location = new System.Drawing.Point(190, 304);
+            this.linkLabelYaTienesCuenta.Name = "linkLabelYaTienesCuenta";
+            this.linkLabelYaTienesCuenta.Size = new System.Drawing.Size(93, 10);
+            this.linkLabelYaTienesCuenta.TabIndex = 16;
+            this.linkLabelYaTienesCuenta.TabStop = true;
+            this.linkLabelYaTienesCuenta.Text = "¿YA TIENES CUENTA?";
+            this.linkLabelYaTienesCuenta.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelYaTienesCuenta_LinkClicked);
             // 
             // Register
             // 
@@ -283,6 +296,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.linkLabelYaTienesCuenta);
             this.Controls.Add(this.btnMinMax);
             this.Controls.Add(this.btnMinimizar);
             this.Controls.Add(this.btnCerrar);
@@ -318,9 +332,10 @@
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape6;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape5;
         private System.Windows.Forms.Button btnRegistrarse;
-        private System.Windows.Forms.PictureBox btnCerrar;
         private System.Windows.Forms.PictureBox btnMinimizar;
         private System.Windows.Forms.PictureBox btnMinMax;
         private System.Windows.Forms.TextBox tbContraseña;
+        private System.Windows.Forms.PictureBox btnCerrar;
+        private System.Windows.Forms.LinkLabel linkLabelYaTienesCuenta;
     }
 }

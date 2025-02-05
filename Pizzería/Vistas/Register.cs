@@ -76,12 +76,20 @@ namespace Pizzería.Vistas
                 // Ajustar la posición del panel cuando está maximizado
                 panel1.Location = new Point(300, 300); // Cambia esto a la ubicación que prefieras
                 btnRegistrarse.Location = new Point(400, 480);
+                linkLabelYaTienesCuenta.Location = new Point(300, 470);
+                btnCerrar.Location = new Point(1050, 25);
+                btnMinMax.Location = new Point(1000, 25);
+                btnMinimizar.Location = new Point(950, 25);
             }
             else
             {
                 // Puedes cambiar el comportamiento si no está maximizado
                 panel1.Location = new Point(160, 150); // Ubicación en tamaño normal
-                btnRegistrarse.Location = new Point(270, 310);
+                btnRegistrarse.Location = new Point(310, 310);
+                linkLabelYaTienesCuenta.Location = new Point(200, 310);
+                btnCerrar.Location = new Point(750, 10);
+                btnMinMax.Location = new Point(700, 10);
+                btnMinimizar.Location = new Point(650, 10);
             }
         }
 
@@ -173,9 +181,18 @@ namespace Pizzería.Vistas
 
         private void btnRegistrarse_Click(object sender, EventArgs e)
         {
+            bool error = false;
             String apellidos = tbApellidos.Text.ToString();
             String[] apellidosSeparados = apellidos.Split(' ');
             Usuario user = new Usuario();
+            if (tbNombre.Text == "" || tbApellidos.Text == "" || tbContraseña.Text == "" || tbDireccion.Text == "" || tbMail.Text == "" || tbTelefono.Text == ""|| tbNombre.Text == "Nombre" || tbApellidos.Text == "Apellidos" || tbContraseña.Text == "Contraseña" || tbDireccion.Text == "Direccion" || tbMail.Text == "Correo Electronico" || tbTelefono.Text == "Telefono")
+            {
+                MessageBox.Show("Faltan datos a introducir");
+                error = true;
+            }
+            else
+            {
+
             user.nombre = tbNombre.Text.ToString();
             user.apellido1 = apellidosSeparados[0];
             if (apellidosSeparados.Length == 2)
@@ -187,8 +204,23 @@ namespace Pizzería.Vistas
                 user.apellido2 = "Null";
             }
             user.contraseña = tbContraseña.Text.ToString();
+                conexion.Open();
+                comando.Connection = conexion;
+                comando.CommandText = "SELECT [Correo] FROM [Usuarios]";
+                SqlDataReader sqlData= comando.ExecuteReader();
+                while (sqlData.Read())
+                {
+                    String sqlCorreo = sqlData.GetString(0);
+                    if (sqlCorreo == tbMail.Text)
+                    {
+                        MessageBox.Show("Error correo electronico ya en uso");
+                        error=true;
+                        break;
+                    }
+                }
+                conexion.Close();
             user.correo = tbMail.Text.ToString();
-            user.telefono = int.Parse(tbTelefono.Text);
+            user.telefono = tbTelefono.Text;
             user.direccion = tbDireccion.Text.ToString();
 
             conexion.Open();
@@ -208,6 +240,14 @@ namespace Pizzería.Vistas
 
             comando.ExecuteNonQuery();
             conexion.Close();
+
+            }
+            if (error==false)
+            {
+                Form login = new Login();
+                login.Show();
+                this.Hide();
+            }
 
         }
 
@@ -231,6 +271,13 @@ namespace Pizzería.Vistas
             {
                 this.WindowState = FormWindowState.Maximized;
             }
+        }
+
+        private void linkLabelYaTienesCuenta_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Form login = new Login();
+            login.Show();
+            this.Hide();
         }
     }
 }
