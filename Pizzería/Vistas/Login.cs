@@ -140,9 +140,8 @@ namespace Pizzería.Vistas
                 }
                 usuario.correo=sqlReader.GetString(3);
                 usuario.telefono=sqlReader.GetString(4);
-                usuario.direccion=sqlReader.GetString(5);
-                usuario.contraseña=sqlReader.GetString(6);
-                usuario.rol = sqlReader.GetString(7);
+                usuario.contraseña=sqlReader.GetString(5);
+                usuario.rol = sqlReader.GetString(6);
                 usuarioList.Add(usuario);
             }
             conexion.Close();
@@ -156,7 +155,6 @@ namespace Pizzería.Vistas
                     UsuarioCache.apellido2=user.apellido2;
                     UsuarioCache.correo=user.correo;
                     UsuarioCache.telefono=user.telefono;
-                    UsuarioCache.direccion=user.direccion;
                     UsuarioCache.contraseña=user.contraseña;
                     UsuarioCache.rol=user.rol;
                     acceso = true;
