@@ -211,12 +211,15 @@ namespace Pizzería.Vistas
                 conexion.Close();
             user.correo = tbMail.Text.ToString();
             user.telefono = tbTelefono.Text;
+            }
             
 
+            if (error==false)
+            {
             conexion.Open();
             comando.Connection = conexion;
-            comando.CommandText = "INSERT INTO [Usuarios] ([Nombre],[Apellido1],[Apellido2],[Contrasena],[Correo],[Telefono],[Direccion],[Rol]) VALUES" +
-                " (@Nombre,@Apellido1,@Apellido2,@Contrasena,@Correo,@Telefono,@Direccion,@Rol)";
+            comando.CommandText = "INSERT INTO [Usuarios] ([Nombre],[Apellido1],[Apellido2],[Contrasena],[Correo],[Telefono],[Rol]) VALUES" +
+                " (@Nombre,@Apellido1,@Apellido2,@Contrasena,@Correo,@Telefono,@Rol)";
 
             comando.Parameters.Clear();
             comando.Parameters.AddWithValue("@Nombre", user.nombre);
@@ -225,15 +228,11 @@ namespace Pizzería.Vistas
             comando.Parameters.AddWithValue("@Contrasena", user.contraseña);
             comando.Parameters.AddWithValue("@Correo", user.correo);
             comando.Parameters.AddWithValue("@Telefono", user.telefono);
-            comando.Parameters.AddWithValue("@Direccion", null);
-            comando.Parameters.AddWithValue("@Rol", "User");
+            comando.Parameters.AddWithValue("@Rol", "user");
 
             comando.ExecuteNonQuery();
             conexion.Close();
 
-            }
-            if (error==false)
-            {
                 Form login = new Login();
                 login.Show();
                 this.Hide();

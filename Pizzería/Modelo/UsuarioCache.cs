@@ -15,7 +15,7 @@ namespace Pizzería.Modelo
         public static string contraseña { get; set; }
         public static string correo { get; set; }
         public static string telefono { get; set; }
-        public static string direccion { get; set; }
+        
         public static string rol { get; set; }
     }
 }

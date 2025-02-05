@@ -15,7 +15,6 @@ namespace Pizzería
         public string contraseña { get; set; }
         public string correo  { get; set; }
         public string telefono { get; set; }
-        public string direccion  { get; set; }
         public string rol  { get; set; }
        
     }
