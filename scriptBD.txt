@@ -85,6 +85,6 @@ INSERT INTO Ingredientes (Nombre_ingrediente, Precio_ingrediente) VALUES ('Cebol
 INSERT INTO Ingredientes (Nombre_ingrediente, Precio_ingrediente) VALUES ('Aceitunas', 2.5)
 INSERT INTO Ingredientes (Nombre_ingrediente, Precio_ingrediente) VALUES ('Pimieneto', 1.1)
 
-INSERT INTO Usuarios (Nombre,Apellido1,Apellido2,Correo,Telefono,Direccion,Contrasena,Rol) VALUES('admin','admin','admin','admin@gmail.com','123456789','No hay direccion','admin','admin')
+INSERT INTO Usuarios (Nombre,Apellido1,Apellido2,Correo,Telefono,Contrasena,Rol) VALUES('admin','admin','admin','admin@gmail.com','123456789','admin','admin')
 
 
