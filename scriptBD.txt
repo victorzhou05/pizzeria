@@ -61,9 +61,10 @@ CREATE TABLE PedidoPizza (
 );
 
 CREATE TABLE Pizza_Ingredientes (
-    Id_tabla INT IDENTITY(1,1) PRIMARY KEY,
     Id_pizza INT NOT NULL,
-    Id_ingredientes INT NOT NULL,
+    Id_ingrediente INT NOT NULL,
+    Cantidad INT NOT NULL,
     FOREIGN KEY (Id_pizza) REFERENCES Pizza(ID),
-    FOREIGN KEY (Id_ingredientes) REFERENCES Ingredientes(Id_Ingrediente)
+    FOREIGN KEY (Id_ingrediente) REFERENCES Ingredientes(Id_Ingrediente),
+    PRIMARY KEY (Id_pizza, Id_ingrediente)
 );
