@@ -157,6 +157,9 @@ namespace Pizzería.Vistas
                     UsuarioCache.contraseña=user.contraseña;
                     UsuarioCache.rol=user.rol;
                     acceso = true;
+                    Form pizzeria = new Pizzeria();
+                    pizzeria.Show();
+                    this.Hide();
                 }
                 else
                 {
