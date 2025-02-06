@@ -29,7 +29,8 @@ namespace Pizzería.Vistas
                 conexion.Open();
                 comando.Connection = conexion;
 
-                comando.CommandText = "SELECT [ID_pedido] FROM [Pedido]"; 
+                comando.CommandText = "SELECT TOP 1 ID_Pedido FROM Pedido WHERE id_usuario = (SELECT ID FROM Usuarios WHERE Correo = 'usuario@example.com') " +
+                    "AND Estado = 'En proceso' ORDER BY Fecha DESC;"; 
 
                 SqlDataReader reader = comando.ExecuteReader();
 

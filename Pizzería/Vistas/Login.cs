@@ -15,7 +15,7 @@ namespace Pizzería.Vistas
 {
     public partial class Login : Form
     {
-        SqlConnection conexion = new SqlConnection("Data Source=DESKTOP-7E96FO2;Initial Catalog=Pizzeria;Persist Security Info=True;User ID=sa;Password=di2024;TrustServerCertificate=True;Encrypt=False;");
+        SqlConnection conexion = new SqlConnection("Data Source=DESKTOP-1R0R5VE;Initial Catalog=pizzeria;Integrated Security=True;TrustServerCertificate=True;Encrypt=True;");
         SqlCommand comando = new SqlCommand();
         public Login()
         {
@@ -138,10 +138,10 @@ namespace Pizzería.Vistas
                 {
                 usuario.apellido2 = apellidos[1];
                 }
-                usuario.correo=sqlReader.GetString(3);
-                usuario.telefono=sqlReader.GetString(4);
-                usuario.contraseña=sqlReader.GetString(5);
-                usuario.rol = sqlReader.GetString(6);
+                usuario.correo=sqlReader.GetString(4);
+                usuario.telefono=sqlReader.GetString(5);
+                usuario.contraseña=sqlReader.GetString(6);
+                usuario.rol = sqlReader.GetString(7);
                 usuarioList.Add(usuario);
             }
             conexion.Close();
@@ -162,15 +162,17 @@ namespace Pizzería.Vistas
                     pizzeria.Show();
                     this.Hide();
                 }
-                else
-                {
-                    acceso = false;
-                }            
+                          
             }
             if (acceso==false)
             {
                 MessageBox.Show("Correo o Contraseña Incorrectos");
             }
+
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
 
         }
     }
