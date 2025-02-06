@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrearPizza));
             this.gbBase = new System.Windows.Forms.GroupBox();
             this.labelProvolone = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -79,6 +80,7 @@
             this.btnCompAtras = new System.Windows.Forms.Button();
             this.btnCompFin = new System.Windows.Forms.Button();
             this.gbIngredientes = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.labelPimiento = new System.Windows.Forms.Label();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.labelAceitunas = new System.Windows.Forms.Label();
@@ -118,8 +120,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.button15 = new System.Windows.Forms.Button();
-            this.rtbImagen = new System.Windows.Forms.RichTextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.gbBase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -179,7 +180,7 @@
             this.gbBase.Controls.Add(this.btnMasaSig);
             this.gbBase.Controls.Add(this.cbMasa);
             this.gbBase.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.gbBase.Location = new System.Drawing.Point(608, 28);
+            this.gbBase.Location = new System.Drawing.Point(648, 26);
             this.gbBase.Name = "gbBase";
             this.gbBase.Size = new System.Drawing.Size(411, 490);
             this.gbBase.TabIndex = 3;
@@ -250,9 +251,11 @@
             // 
             // pictureBox8
             // 
+            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
             this.pictureBox8.Location = new System.Drawing.Point(72, 320);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox8.TabIndex = 55;
             this.pictureBox8.TabStop = false;
             // 
@@ -405,9 +408,11 @@
             // 
             // pictureBox3
             // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
             this.pictureBox3.Location = new System.Drawing.Point(278, 204);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox3.TabIndex = 17;
             this.pictureBox3.TabStop = false;
             // 
@@ -437,9 +442,11 @@
             // 
             // pictureBox2
             // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(197, 204);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox2.TabIndex = 14;
             this.pictureBox2.TabStop = false;
             // 
@@ -469,9 +476,11 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(114, 204);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
             // 
@@ -562,7 +571,7 @@
             this.gbCompletar.Controls.Add(this.btnCompAtras);
             this.gbCompletar.Controls.Add(this.btnCompFin);
             this.gbCompletar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.gbCompletar.Location = new System.Drawing.Point(608, 28);
+            this.gbCompletar.Location = new System.Drawing.Point(0, 2);
             this.gbCompletar.Name = "gbCompletar";
             this.gbCompletar.Size = new System.Drawing.Size(411, 488);
             this.gbCompletar.TabIndex = 12;
@@ -686,6 +695,7 @@
             // gbIngredientes
             // 
             this.gbIngredientes.Controls.Add(this.button1);
+            this.gbIngredientes.Controls.Add(this.gbCompletar);
             this.gbIngredientes.Controls.Add(this.labelPimiento);
             this.gbIngredientes.Controls.Add(this.pictureBox11);
             this.gbIngredientes.Controls.Add(this.labelAceitunas);
@@ -726,12 +736,22 @@
             this.gbIngredientes.Controls.Add(this.label15);
             this.gbIngredientes.Controls.Add(this.button15);
             this.gbIngredientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.gbIngredientes.Location = new System.Drawing.Point(608, 26);
+            this.gbIngredientes.Location = new System.Drawing.Point(648, 26);
             this.gbIngredientes.Name = "gbIngredientes";
             this.gbIngredientes.Size = new System.Drawing.Size(411, 490);
             this.gbIngredientes.TabIndex = 35;
             this.gbIngredientes.TabStop = false;
             this.gbIngredientes.Text = "Ingredientes";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(88, 405);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(101, 32);
+            this.button1.TabIndex = 55;
+            this.button1.Text = "Atras";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btnIngrAtras_Click);
             // 
             // labelPimiento
             // 
@@ -1141,33 +1161,20 @@
             this.button15.UseVisualStyleBackColor = true;
             this.button15.Click += new System.EventHandler(this.btnIngrSig_Click);
             // 
-            // rtbImagen
+            // panel1
             // 
-            this.rtbImagen.Location = new System.Drawing.Point(19, 22);
-            this.rtbImagen.Name = "rtbImagen";
-            this.rtbImagen.ReadOnly = true;
-            this.rtbImagen.Size = new System.Drawing.Size(583, 505);
-            this.rtbImagen.TabIndex = 12;
-            this.rtbImagen.Text = "";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(88, 405);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(101, 32);
-            this.button1.TabIndex = 55;
-            this.button1.Text = "Atras";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.btnIngrAtras_Click);
+            this.panel1.Location = new System.Drawing.Point(13, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(629, 504);
+            this.panel1.TabIndex = 36;
             // 
             // CrearPizza
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1081, 562);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.gbIngredientes);
-            this.Controls.Add(this.gbCompletar);
-            this.Controls.Add(this.rtbImagen);
             this.Controls.Add(this.gbBase);
             this.Name = "CrearPizza";
             this.Text = "CrearPizza";
@@ -1219,7 +1226,6 @@
         private System.Windows.Forms.Button btnCompFin;
         private System.Windows.Forms.TextBox tbCompNombre;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.RichTextBox rtbImagen;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader2;
@@ -1292,5 +1298,6 @@
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panel1;
     }
 }

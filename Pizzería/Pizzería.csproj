@@ -122,6 +122,23 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="Recursos\CartelPizzeria.jpg" />
+    <Content Include="Recursos\Ingredientes\4quesos.png" />
+    <Content Include="Recursos\Ingredientes\aceitunas.png" />
+    <Content Include="Recursos\Ingredientes\atun.png" />
+    <Content Include="Recursos\Ingredientes\bacon.png" />
+    <Content Include="Recursos\Ingredientes\cebolla.png" />
+    <Content Include="Recursos\Ingredientes\champiñon.png" />
+    <Content Include="Recursos\Ingredientes\image.png" />
+    <Content Include="Recursos\Ingredientes\masa.png" />
+    <Content Include="Recursos\Ingredientes\peperoni.png" />
+    <Content Include="Recursos\Ingredientes\pimiento.png" />
+    <Content Include="Recursos\Ingredientes\pollo.png" />
+    <Content Include="Recursos\Ingredientes\quesCheddaro.png" />
+    <Content Include="Recursos\Ingredientes\quesoSuizo.png" />
+    <Content Include="Recursos\Ingredientes\salsaBarbacoa.png" />
+    <Content Include="Recursos\Ingredientes\salsaCarbonara.png" />
+    <Content Include="Recursos\Ingredientes\salsaTomate.png" />
+    <Content Include="Recursos\Ingredientes\ternera.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

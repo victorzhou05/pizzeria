@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.PowerPacks;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,11 +15,14 @@ namespace Pizzería.Vistas
 {
     public partial class CrearPizza : Form
     {
+        String url = "server=(local)\\SQLEXPRESS;database=master;Integrated Security = SSPI";
+        
         private string Masa;
         private string Tamano;
         private Dictionary<string, int> ingrBase;
         private Dictionary<string, int> ingrCarne;
         private Dictionary<string, int> ingrVerdura;
+        private Dictionary<string, string> dictImagenes;
 
         public CrearPizza()
         {
@@ -24,12 +30,37 @@ namespace Pizzería.Vistas
         }
         private void CrearPizza_Load(object sender, EventArgs e)
         {
+         
             gbBase.Visible = true;
             gbIngredientes.Visible = false;
             gbCompletar.Visible = false;
             ingrBase = new Dictionary<string, int>();
             ingrCarne = new Dictionary<string, int>();
             ingrVerdura = new Dictionary<string, int>();
+            dictImagenes = new Dictionary<string, string>();
+            insertarImagenes();
+        }
+
+        private void insertarImagenes()
+        {
+            dictImagenes.Add("4Quesos", "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\4quesos.png");
+            dictImagenes.Add("Aceitunas", "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\aceitunas.png");
+            dictImagenes.Add("Atun", "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\atun.png");
+            dictImagenes.Add("Cerdo", "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\bacon.png");
+            dictImagenes.Add("Cebolla", "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\cebolla.png");
+            dictImagenes.Add("Champinon", "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\\\Ingredientes\\champiñon.png");
+            dictImagenes.Add("Mozzarela", "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\image.png");
+            dictImagenes.Add("Masa", "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\masa.png");
+            dictImagenes.Add("Pimiento", "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\pimiento.png");
+            dictImagenes.Add("Pollo", "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\pollo.png");
+            dictImagenes.Add("Cheddar", "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\quesCheddaro.png");
+            dictImagenes.Add("Suizo", "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\quesoSuizo.png");
+            dictImagenes.Add("Barbacoa", "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\salsaBarbacoa.png");
+            dictImagenes.Add("Carbonara", "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\salsaCarbonara.png");
+            dictImagenes.Add("Tomate", "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\salsaTomate.png");
+            dictImagenes.Add("Ternera", "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\Ternera.png");
+
+
         }
 
 
@@ -89,7 +120,8 @@ namespace Pizzería.Vistas
                 return;
             }
 
-
+            anadirPictureBox(dictImagenes["Masa"]).BringToFront();
+            
 
             lvBase.Clear();
             lvBase.Items.Add("Tamaño: " + cbTamano.Text);
@@ -98,16 +130,186 @@ namespace Pizzería.Vistas
             {
                 string ingredientes = par.Key + ": " + par.Value;
                 lvBase.Items.Add(ingredientes);
+                anadirPictureBox(dictImagenes[par.Key]).BringToFront();
             }
+
+                
 
             gbIngredientes.Visible = true;
             gbBase.Visible = false;
         }
         private void btnCompFin_Click(object sender, EventArgs e)
         {
+            SqlConnection conexion = new SqlConnection(url);
+            SqlCommand comandosql = new SqlCommand();
+           // SqlTransaction mitransaccion;
+            String nombre = tbCompNombre.Text;
+
+            if (buscarNombreRepetido(nombre))
+            {
+                MessageBox.Show("Este nombre ya ha sido usado, pruebe con otro");
+                return;
+            }
 
             //Insertar los datos en la base de datos
+            conexion.Open();
+           // mitransaccion = conexion.BeginTransaction();
+            try
+            {
+            comandosql.Connection = conexion;
+           // comandosql.Transaction = mitransaccion;
+            comandosql.CommandText = "INSERT INTO Pizza (Nombre, Tamano) VALUES (@nombre, @tamano)";
+
+            comandosql.Parameters.AddWithValue("@nombre", nombre);
+            comandosql.Parameters.AddWithValue("@tamano", this.Tamano);
+
+            comandosql.ExecuteNonQuery();
+           // mitransaccion.Commit();
+
+            }catch(Exception ex)
+            {
+          //      mitransaccion.Rollback();
+            }
+
+            comandosql.Parameters.Clear();
+            comandosql.CommandText = "SELECT id FROM Pizza where Nombre = @nombre";
+            comandosql.Parameters.AddWithValue("@nombre", nombre);
+            SqlDataReader reader = comandosql.ExecuteReader();
+
+            int pizzaId = 0;
+            if (reader.Read())
+            {
+                pizzaId = reader.GetInt32(0);
+            }
+            conexion.Close();
+
+            
+            
+            foreach (KeyValuePair<string, int> par in ingrBase)
+            {
+                conexion.Open();
+            //    SqlTransaction transaccionIngr = conexion.BeginTransaction();
+            //    comandosql.Transaction = mitransaccion;
+
+                int id = obtenerIdIngrediente(par.Key);
+                int cantidad = par.Value;
+
+                comandosql.Parameters.Clear();
+                comandosql.CommandText = "INSERT INTO Pizza_Ingredientes (Id_pizza, Id_ingrediente, Cantidad) VALUES (@idPizza, @idIngrediente, @Cantidad);";
+                comandosql.Parameters.AddWithValue("@idPizza", pizzaId);
+                comandosql.Parameters.AddWithValue("@idIngrediente", id);
+                comandosql.Parameters.AddWithValue("@Cantidad", cantidad);
+                comandosql.ExecuteNonQuery();
+              //  transaccionIngr.Commit();
+                conexion.Close();
+            }
+
+            foreach (KeyValuePair<string, int> par in ingrCarne)
+            {
+                conexion.Open();
+                //    SqlTransaction transaccionIngr = conexion.BeginTransaction();
+                //    comandosql.Transaction = mitransaccion;
+
+                int id = obtenerIdIngrediente(par.Key);
+                int cantidad = par.Value;
+
+                comandosql.Parameters.Clear();
+                comandosql.CommandText = "INSERT INTO Pizza_Ingredientes (Id_pizza, Id_ingrediente, Cantidad) VALUES (@idPizza, @idIngrediente, @Cantidad);";
+                comandosql.Parameters.AddWithValue("@idPizza", pizzaId);
+                comandosql.Parameters.AddWithValue("@idIngrediente", id);
+                comandosql.Parameters.AddWithValue("@Cantidad", cantidad);
+                comandosql.ExecuteNonQuery();
+                //  transaccionIngr.Commit();
+                conexion.Close();
+            }
+
+            foreach (KeyValuePair<string, int> par in ingrVerdura)
+            {
+                conexion.Open();
+                //    SqlTransaction transaccionIngr = conexion.BeginTransaction();
+                //    comandosql.Transaction = mitransaccion;
+
+                int id = obtenerIdIngrediente(par.Key);
+                int cantidad = par.Value;
+
+                comandosql.Parameters.Clear();
+                comandosql.CommandText = "INSERT INTO Pizza_Ingredientes (Id_pizza, Id_ingrediente, Cantidad) VALUES (@idPizza, @idIngrediente, @Cantidad);";
+                comandosql.Parameters.AddWithValue("@idPizza", pizzaId);
+                comandosql.Parameters.AddWithValue("@idIngrediente", id);
+                comandosql.Parameters.AddWithValue("@Cantidad", cantidad);
+                comandosql.ExecuteNonQuery();
+                //  transaccionIngr.Commit();
+                conexion.Close();
+            }
+
+
             this.Close();
+        }
+
+        private PictureBox anadirPictureBox(String imagen)
+        {
+            PictureBox pictureBox1 = new PictureBox();
+            pictureBox1.Image = Image.FromFile(imagen);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.Size = new Size(300, 300);
+            pictureBox1.BackColor = Color.Transparent;
+            this.TransparencyKey = Color.Transparent;
+            panel1.Controls.Add(pictureBox1);
+            return pictureBox1;
+        }
+
+        private int obtenerIdIngrediente(String nombre)
+        {
+            SqlConnection conexion = new SqlConnection(url);
+            SqlCommand comandosql = new SqlCommand();
+            //SqlTransaction mitransaccion;
+            int id = 0;
+            conexion.Open();
+            //mitransaccion = conexion.BeginTransaction();
+            
+            comandosql.Connection = conexion;
+            //comandosql.Transaction = mitransaccion;
+            comandosql.CommandText = "SELECT Id_Ingrediente from Ingredientes where Nombre_ingrediente = @nombre";
+            comandosql.Parameters.AddWithValue("@nombre", nombre);
+
+            SqlDataReader reader = comandosql.ExecuteReader();
+
+            if (reader.Read())
+            {
+                id = reader.GetInt32(0);
+            }
+            reader.Close();
+            conexion.Close();
+           // mitransaccion.Commit();
+
+            return id;
+        }
+
+        private bool buscarNombreRepetido(String nombre)
+        {
+            SqlConnection conn = new SqlConnection(url);
+            SqlCommand comando = new SqlCommand();
+           // SqlTransaction mitransaccion;
+
+            conn.Open();
+           // mitransaccion = conn.BeginTransaction();
+
+            comando.Connection = conn;
+           // comando.Transaction = mitransaccion;
+            comando.CommandText = "SELECT * from Pizza where Nombre = @nombre";
+            comando.Parameters.AddWithValue("@nombre", nombre);
+
+            SqlDataReader reader = comando.ExecuteReader();
+           // mitransaccion.Commit();
+            if (reader.Read())
+            {
+                reader.Close();
+                conn.Close();
+                return true;
+            }
+
+            return false;
+
         }
 
         private void ModificarIngrediente(Dictionary<string, int> dic, string ingrediente, bool incrementar, Label label)
