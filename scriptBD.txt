@@ -45,7 +45,7 @@ CREATE TABLE Pizza (
 );
 
 CREATE TABLE Ingredientes (
-    Id_Ingrediente INT IDENTITY(1,1) PRIMARY KEY,
+    Id_Ingrediente INT PRIMARY KEY,
     Nombre_ingrediente VARCHAR(50) NOT NULL,
     Precio_ingrediente DECIMAL(10, 2) NOT NULL
 );
@@ -68,23 +68,41 @@ CREATE TABLE Pizza_Ingredientes (
     PRIMARY KEY (Id_pizza, Id_ingrediente)
 );
 
-INSERT INTO Ingredientes (Nombre_ingrediente, Precio_ingrediente) VALUES('Tomate', 2)
-INSERT INTO Ingredientes (Nombre_ingrediente, Precio_ingrediente) VALUES ('Carbonara', 1.5)
-INSERT INTO Ingredientes (Nombre_ingrediente, Precio_ingrediente) VALUES ('Barbacoa', 1)
-INSERT INTO Ingredientes (Nombre_ingrediente, Precio_ingrediente) VALUES ('Mozzarela', 2.5)
-INSERT INTO Ingredientes (Nombre_ingrediente, Precio_ingrediente) VALUES ('Cheddar', 1.7)
-INSERT INTO Ingredientes (Nombre_ingrediente, Precio_ingrediente) VALUES ('Suizo', 2)
-INSERT INTO Ingredientes (Nombre_ingrediente, Precio_ingrediente) VALUES ('Provolone', 2.3)
-INSERT INTO Ingredientes (Nombre_ingrediente, Precio_ingrediente) VALUES ('Ternera', 4)
-INSERT INTO Ingredientes (Nombre_ingrediente, Precio_ingrediente) VALUES ('Pollo', 3.6)
-INSERT INTO Ingredientes (Nombre_ingrediente, Precio_ingrediente) VALUES ('Cerdo', 4.3)
-INSERT INTO Ingredientes (Nombre_ingrediente, Precio_ingrediente) VALUES ('Atun', 3)
-INSERT INTO Ingredientes (Nombre_ingrediente, Precio_ingrediente) VALUES ('Pepperoni', 2.3)
-INSERT INTO Ingredientes (Nombre_ingrediente, Precio_ingrediente) VALUES ('Champiñon', 1.6)
-INSERT INTO Ingredientes (Nombre_ingrediente, Precio_ingrediente) VALUES ('Cebolla', 2.1)
-INSERT INTO Ingredientes (Nombre_ingrediente, Precio_ingrediente) VALUES ('Aceitunas', 2.5)
-INSERT INTO Ingredientes (Nombre_ingrediente, Precio_ingrediente) VALUES ('Pimieneto', 1.1)
+INSERT INTO Ingredientes (Id_ingrediente, Nombre_ingrediente, Precio_ingrediente) VALUES( 1, 'Tomate', 2)
+INSERT INTO Ingredientes (Id_ingrediente, Nombre_ingrediente, Precio_ingrediente) VALUES (2, 'Carbonara', 1.5)
+INSERT INTO Ingredientes (Id_ingrediente, Nombre_ingrediente, Precio_ingrediente) VALUES (3, 'Barbacoa', 1)
+INSERT INTO Ingredientes (Id_ingrediente, Nombre_ingrediente, Precio_ingrediente) VALUES (4, 'Mozzarela', 2.5)
+INSERT INTO Ingredientes (Id_ingrediente, Nombre_ingrediente, Precio_ingrediente) VALUES (5, 'Cheddar', 1.7)
+INSERT INTO Ingredientes (Id_ingrediente, Nombre_ingrediente, Precio_ingrediente) VALUES (6, 'Suizo', 2)
+INSERT INTO Ingredientes (Id_ingrediente, Nombre_ingrediente, Precio_ingrediente) VALUES (7, '4Quesos', 2.3)
+INSERT INTO Ingredientes (Id_ingrediente, Nombre_ingrediente, Precio_ingrediente) VALUES (8, 'Ternera', 4)
+INSERT INTO Ingredientes (Id_ingrediente, Nombre_ingrediente, Precio_ingrediente) VALUES (9, 'Pollo', 3.6)
+INSERT INTO Ingredientes (Id_ingrediente, Nombre_ingrediente, Precio_ingrediente) VALUES (10, 'Cerdo', 4.3)
+INSERT INTO Ingredientes (Id_ingrediente, Nombre_ingrediente, Precio_ingrediente) VALUES (11, 'Atun', 3)
+INSERT INTO Ingredientes (Id_ingrediente, Nombre_ingrediente, Precio_ingrediente) VALUES (12, 'Pepperoni', 2.3)
+INSERT INTO Ingredientes (Id_ingrediente, Nombre_ingrediente, Precio_ingrediente) VALUES (13, 'Champiñon', 1.6)
+INSERT INTO Ingredientes (Id_ingrediente, Nombre_ingrediente, Precio_ingrediente) VALUES (14, 'Cebolla', 2.1)
+INSERT INTO Ingredientes (Id_ingrediente, Nombre_ingrediente, Precio_ingrediente) VALUES (15, 'Aceitunas', 2.5)
+INSERT INTO Ingredientes (Id_ingrediente, Nombre_ingrediente, Precio_ingrediente) VALUES (16, 'Pimieneto', 1.1)
 
 INSERT INTO Usuarios (Nombre,Apellido1,Apellido2,Correo,Telefono,Contrasena,Rol) VALUES('admin','admin','admin','admin@gmail.com','123456789','admin','admin')
+
+INSERT INTO Pizza (ID, Nombre, Tamano) VALUES (1, '4 Quesos', 'Mediana')
+INSERT INTO Pizza_Ingredientes (Id_pizza, Id_ingrediente, Cantidad) VALUES (1, 7, 1)
+
+INSERT INTO Pizza (ID, Nombre, Tamano) VALUES (2, 'Barbacoa', 'Mediana')
+INSERT INTO Pizza_Ingredientes (Id_pizza, Id_ingrediente, Cantidad) VALUES (2, 3, 1)
+INSERT INTO Pizza_Ingredientes (Id_pizza, Id_ingrediente, Cantidad) VALUES (2, 4, 1)
+INSERT INTO Pizza_Ingredientes (Id_pizza, Id_ingrediente, Cantidad) VALUES (2, 10, 1)
+
+INSERT INTO Pizza (ID, Nombre, Tamano) VALUES (3, 'Carbonara', 'Mediana')
+INSERT INTO Pizza_Ingredientes (Id_pizza, Id_ingrediente, Cantidad) VALUES (3, 2, 1)
+INSERT INTO Pizza_Ingredientes (Id_pizza, Id_ingrediente, Cantidad) VALUES (3, 4, 1)
+INSERT INTO Pizza_Ingredientes (Id_pizza, Id_ingrediente, Cantidad) VALUES (3, 10, 1)
+INSERT INTO Pizza_Ingredientes (Id_pizza, Id_ingrediente, Cantidad) VALUES (3, 13, 1)
+
+
+
+
 
 
