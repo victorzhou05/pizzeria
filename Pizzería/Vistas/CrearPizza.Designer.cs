@@ -121,6 +121,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.button15 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.imagenPizza = new System.Windows.Forms.PictureBox();
             this.gbBase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -140,6 +141,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imagenPizza)).BeginInit();
             this.SuspendLayout();
             // 
             // gbBase
@@ -571,7 +574,7 @@
             this.gbCompletar.Controls.Add(this.btnCompAtras);
             this.gbCompletar.Controls.Add(this.btnCompFin);
             this.gbCompletar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.gbCompletar.Location = new System.Drawing.Point(0, 2);
+            this.gbCompletar.Location = new System.Drawing.Point(648, 28);
             this.gbCompletar.Name = "gbCompletar";
             this.gbCompletar.Size = new System.Drawing.Size(411, 488);
             this.gbCompletar.TabIndex = 12;
@@ -695,7 +698,6 @@
             // gbIngredientes
             // 
             this.gbIngredientes.Controls.Add(this.button1);
-            this.gbIngredientes.Controls.Add(this.gbCompletar);
             this.gbIngredientes.Controls.Add(this.labelPimiento);
             this.gbIngredientes.Controls.Add(this.pictureBox11);
             this.gbIngredientes.Controls.Add(this.labelAceitunas);
@@ -1163,10 +1165,20 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.imagenPizza);
             this.panel1.Location = new System.Drawing.Point(13, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(629, 504);
             this.panel1.TabIndex = 36;
+            // 
+            // imagenPizza
+            // 
+            this.imagenPizza.Location = new System.Drawing.Point(99, 44);
+            this.imagenPizza.Name = "imagenPizza";
+            this.imagenPizza.Size = new System.Drawing.Size(400, 400);
+            this.imagenPizza.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imagenPizza.TabIndex = 0;
+            this.imagenPizza.TabStop = false;
             // 
             // CrearPizza
             // 
@@ -1174,6 +1186,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1081, 562);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.gbCompletar);
             this.Controls.Add(this.gbIngredientes);
             this.Controls.Add(this.gbBase);
             this.Name = "CrearPizza";
@@ -1202,6 +1215,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.imagenPizza)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1299,5 +1314,6 @@
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox imagenPizza;
     }
 }

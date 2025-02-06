@@ -23,7 +23,7 @@ namespace Pizzería.Vistas
         private Dictionary<string, int> ingrCarne;
         private Dictionary<string, int> ingrVerdura;
         private Dictionary<string, string> dictImagenes;
-
+        private Bitmap pizzaBase;
         public CrearPizza()
         {
             InitializeComponent();
@@ -43,22 +43,23 @@ namespace Pizzería.Vistas
 
         private void insertarImagenes()
         {
-            dictImagenes.Add("4Quesos", "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\4quesos.png");
-            dictImagenes.Add("Aceitunas", "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\aceitunas.png");
-            dictImagenes.Add("Atun", "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\atun.png");
-            dictImagenes.Add("Cerdo", "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\bacon.png");
-            dictImagenes.Add("Cebolla", "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\cebolla.png");
-            dictImagenes.Add("Champinon", "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\\\Ingredientes\\champiñon.png");
-            dictImagenes.Add("Mozzarela", "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\image.png");
-            dictImagenes.Add("Masa", "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\masa.png");
-            dictImagenes.Add("Pimiento", "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\pimiento.png");
-            dictImagenes.Add("Pollo", "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\pollo.png");
-            dictImagenes.Add("Cheddar", "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\quesCheddaro.png");
-            dictImagenes.Add("Suizo", "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\quesoSuizo.png");
-            dictImagenes.Add("Barbacoa", "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\salsaBarbacoa.png");
-            dictImagenes.Add("Carbonara", "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\salsaCarbonara.png");
-            dictImagenes.Add("Tomate", "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\salsaTomate.png");
-            dictImagenes.Add("Ternera", "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\Ternera.png");
+            dictImagenes.Add("4Quesos", "C:\\Users\\10407\\Source\\Repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\4quesos.png");
+            dictImagenes.Add("Aceitunas", "C:\\Users\\10407\\Source\\Repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\aceitunas.png");
+            dictImagenes.Add("Atun", "C:\\Users\\10407\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\atun.png");
+            dictImagenes.Add("Cerdo", "C:\\Users\\10407\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\bacon.png");
+            dictImagenes.Add("Cebolla", "C:\\Users\\10407\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\cebolla.png");
+            dictImagenes.Add("Champinon", "C:\\Users\\10407\\Source\\Repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\champiñon.png");
+            dictImagenes.Add("Mozzarela", "C:\\Users\\10407\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\image.png");
+            dictImagenes.Add("Masa", "C:\\Users\\10407\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\masa.png");
+            dictImagenes.Add("Pimiento", "C:\\Users\\10407\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\pimiento.png");
+            dictImagenes.Add("Pollo", "C:\\Users\\10407\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\pollo.png");
+            dictImagenes.Add("Cheddar", "C:\\Users\\10407\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\quesCheddaro.png");
+            dictImagenes.Add("Suizo", "C:\\Users\\10407\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\quesoSuizo.png");
+            dictImagenes.Add("Barbacoa", "C:\\Users\\10407\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\salsaBarbacoa.png");
+            dictImagenes.Add("Carbonara", "C:\\Users\\10407\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\salsaCarbonara.png");
+            dictImagenes.Add("Tomate", "C:\\Users\\10407\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\salsaTomate.png");
+            dictImagenes.Add("Ternera", "C:\\Users\\10407\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\Ternera.png");
+            dictImagenes.Add("Pepperoni", "C:\\Users\\10407\\Source\\Repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\peperoni.png");
 
 
         }
@@ -66,8 +67,10 @@ namespace Pizzería.Vistas
 
         private void btnIngrAtras_Click(object sender, EventArgs e)
         {
+            imagenPizza.Image = pizzaBase;
             gbIngredientes.Visible = false;
             gbBase.Visible = true;
+
         }
 
 
@@ -84,23 +87,31 @@ namespace Pizzería.Vistas
             lvCarnes.Clear();
             lvVerduras.Clear();
 
-            if (ingrCarne.Count > 0)
+            Bitmap pizzaIngr = (Bitmap)this.pizzaBase.Clone();
+            using (Graphics g = Graphics.FromImage(pizzaIngr))
             {
-                
-                foreach (KeyValuePair<string, int> par in ingrCarne)
+                g.DrawImage(pizzaIngr, 0, 0);
+                if (ingrCarne.Count > 0)
                 {
-                    string ingredientes = par.Key + ": " + par.Value;
-                    lvCarnes.Items.Add(ingredientes);
-                }
-            }
+                    foreach (KeyValuePair<string, int> par in ingrCarne)
+                    {
+                        string ingredientes = par.Key + ": " + par.Value;
+                        lvCarnes.Items.Add(ingredientes);
+                        g.DrawImage(Image.FromFile(dictImagenes[par.Key]), 0, 0);
+                    }
 
-            if (ingrVerdura.Count > 0)
-            {
-                foreach (KeyValuePair<string, int> par in ingrVerdura)
-                {
-                    string ingredientes = par.Key + ": " + par.Value;
-                    lvVerduras.Items.Add(ingredientes);
                 }
+
+                if (ingrVerdura.Count > 0)
+                {
+                    foreach (KeyValuePair<string, int> par in ingrVerdura)
+                    {
+                        string ingredientes = par.Key + ": " + par.Value;
+                        lvVerduras.Items.Add(ingredientes);
+                        g.DrawImage(Image.FromFile(dictImagenes[par.Key]), 0, 0);
+                    }
+                }
+                imagenPizza.Image = pizzaIngr;
             }
 
             gbIngredientes.Visible = false;
@@ -120,20 +131,29 @@ namespace Pizzería.Vistas
                 return;
             }
 
-            anadirPictureBox(dictImagenes["Masa"]).BringToFront();
             
 
             lvBase.Clear();
             lvBase.Items.Add("Tamaño: " + cbTamano.Text);
             lvBase.Items.Add("Masa: " + cbMasa.Text);
-            foreach (KeyValuePair<string, int> par in ingrBase)
+
+
+            Image imgMasa = Image.FromFile(dictImagenes["Masa"]);
+            this.pizzaBase = new Bitmap(imgMasa.Width, imgMasa.Height);
+
+            using (Graphics g = Graphics.FromImage(this.pizzaBase))
             {
-                string ingredientes = par.Key + ": " + par.Value;
-                lvBase.Items.Add(ingredientes);
-                anadirPictureBox(dictImagenes[par.Key]).BringToFront();
+                g.DrawImage(imgMasa, 0, 0);
+                foreach (KeyValuePair<string, int> par in ingrBase)
+                {
+                    string ingredientes = par.Key + ": " + par.Value;
+                    lvBase.Items.Add(ingredientes);
+                    g.DrawImage(Image.FromFile(dictImagenes[par.Key]), 0, 0);
+                    
+                }
             }
 
-                
+            imagenPizza.Image = this.pizzaBase;
 
             gbIngredientes.Visible = true;
             gbBase.Visible = false;
@@ -403,12 +423,12 @@ namespace Pizzería.Vistas
 
         private void btnProvoloneMenos_Click(object sender, EventArgs e)
         {
-            ModificarIngrediente(ingrBase, "Provolone", false, labelProvolone);
+            ModificarIngrediente(ingrBase, "4Quesos", false, labelProvolone);
         }
 
         private void btnProvoloneMas_Click(object sender, EventArgs e)
         {
-            ModificarIngrediente(ingrBase, "Provolone", true, labelProvolone);
+            ModificarIngrediente(ingrBase, "4Quesos", true, labelProvolone);
         }
 
         private void btnSuizoMenos_Click(object sender, EventArgs e)
@@ -475,12 +495,12 @@ namespace Pizzería.Vistas
 
         private void btnChampinonesMenos_Click(object sender, EventArgs e)
         {
-            ModificarIngrediente(ingrVerdura, "Champiñones", false, labelChampinon);
+            ModificarIngrediente(ingrVerdura, "Champinon", false, labelChampinon);
         }
 
         private void btnChampinonesMas_Click(object sender, EventArgs e)
         {
-            ModificarIngrediente(ingrVerdura, "Champiñones", true, labelChampinon);
+            ModificarIngrediente(ingrVerdura, "Champinon", true, labelChampinon);
         }
 
         private void btnPimientoMenos_Click(object sender, EventArgs e)
