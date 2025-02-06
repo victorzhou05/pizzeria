@@ -69,6 +69,12 @@
     <Compile Include="Vistas\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\losegsgs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\losegsgs.Designer.cs">
+      <DependentUpon>losegsgs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\Pizzeria.cs">
       <SubType>Form</SubType>
     </Compile>
