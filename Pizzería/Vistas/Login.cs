@@ -130,18 +130,14 @@ namespace Pizzería.Vistas
             while (sqlReader.Read())
             {
                 Usuario usuario = new Usuario();
-                String[] apellidos= sqlReader.GetString(2).Split(' ');
                 usuario.id = sqlReader.GetInt32(0);
                 usuario.nombre = sqlReader.GetString(1);
-                usuario.apellido1 = apellidos[0];
-                if (apellidos.Length > 1)
-                {
-                usuario.apellido2 = apellidos[1];
-                }
-                usuario.correo=sqlReader.GetString(3);
-                usuario.telefono=sqlReader.GetString(4);
-                usuario.contraseña=sqlReader.GetString(5);
-                usuario.rol = sqlReader.GetString(6);
+                usuario.apellido1 = sqlReader.GetString(2);
+                usuario.apellido2 = sqlReader.GetString(3);
+                usuario.correo=sqlReader.GetString(4);
+                usuario.telefono=sqlReader.GetString(5);
+                usuario.contraseña=sqlReader.GetString(6);
+                usuario.rol = sqlReader.GetString(7);
                 usuarioList.Add(usuario);
             }
             conexion.Close();
@@ -161,11 +157,7 @@ namespace Pizzería.Vistas
                     Form pizzeria = new Pizzeria();
                     pizzeria.Show();
                     this.Hide();
-                }
-                else
-                {
-                    acceso = false;
-                }            
+                }          
             }
             if (acceso==false)
             {
