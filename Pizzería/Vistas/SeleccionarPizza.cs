@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,36 +17,64 @@ namespace Pizzería.Vistas
     {
         SqlConnection conexion;
         SqlCommand comando;
-        private int idPizzaSeleccionada = 0;
 
         public SeleccionarPizza()
         {
             InitializeComponent();
-            conexion = new SqlConnection("Data Source=DESKTOP-1R0R5VE;Initial Catalog=pizzeria;Integrated Security=True;TrustServerCertificate=True;Encrypt=True;");
+            conexion = new SqlConnection(Program.url);
             comando = new SqlCommand { Connection = conexion };
         }
 
         private void bt_siguiente_Click(object sender, EventArgs e)
         {
-            if (idPizzaSeleccionada == 0)
+            if (listView1.SelectedItems.Count <= 0)
             {
-                MessageBox.Show("Por favor, selecciona una pizza.");
+                MessageBox.Show("Seleccione una pizza");
                 return;
             }
 
+            string nombre = listView1.SelectedItems[0].Text.ToString();
+
             try
             {
+
+
+                string query = "SELECT ID from Pizza where Nombre = @nombre";
                 conexion.Open();
+                comando.Connection = conexion;
+                comando.CommandText = query;
                 comando.Parameters.Clear();
-                comando.CommandText = "INSERT INTO [PedidoPizza] ([Id_Pedido],[Id_Pizza],[Cantidad]) " +
-                    "VALUES ((SELECT MAX(([ID_Pedido])) FROM ([Pedido])), @idPizza, @cantidad)";
-                comando.Parameters.AddWithValue("@idPizza", idPizzaSeleccionada);
+                comando.Parameters.AddWithValue("@nombre", nombre);
+                SqlDataReader reader = comando.ExecuteReader();
+
+                int idPizza = 0;
+
+                if (reader.Read())
+                {
+                    idPizza = reader.GetInt32(0);
+                }
+                else
+                {
+                    MessageBox.Show("Hubo un error al seleccionar la pizza");
+                    return;
+                }
+                reader.Close();
+
+
+                query = "INSERT INTO [PedidoPizza] ([Id_Pedido], [Id_Pizza], [Cantidad]) " +
+                        "VALUES ((SELECT MAX([ID_Pedido]) FROM [Pedido]), @idPizza, @cantidad)";
+                comando.CommandText = query;
+
+                comando.Parameters.Clear();
+                comando.Parameters.AddWithValue("@idPizza", idPizza);
                 comando.Parameters.AddWithValue("@cantidad", 1);
+
                 comando.ExecuteNonQuery();
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al guardar el pedido: " + ex.Message);
+                MessageBox.Show("Error al leer los datos de las pizzas");
             }
             finally
             {
@@ -54,37 +83,27 @@ namespace Pizzería.Vistas
 
             Pedido pedido = new Pedido();
             pedido.Show();
+            this.Close();
+
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            idPizzaSeleccionada = 1;
-            MessageBox.Show("Pizza seleccionada: 4 quesos");
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            idPizzaSeleccionada = 2;
-            MessageBox.Show("Pizza seleccionada: Barbacoa");
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            idPizzaSeleccionada = 3;
-            MessageBox.Show("Pizza seleccionada: Carbonara");
-        }
 
         private void SeleccionarPizza_Load(object sender, EventArgs e)
         {
             try
             {
                 conexion.Open();
-                string query = "SELECT I.Nombre_ingrediente " +
-                    "FROM Pizza_Ingredientes PI INNER JOIN Ingredientes I ON PI.Id_ingrediente = I.Id_Ingrediente WHERE PI.Id_pizza = @id;";
+                string query = "SELECT Nombre from Pizza ORDER BY Nombre ASC";
+                comando.Connection = conexion;
+                comando.CommandText = query;
+                SqlDataReader reader = comando.ExecuteReader();
 
-                MostrarDatosLabels(query, label4, 3);
-                MostrarDatosLabels(query, label5, 2);
-                MostrarDatosLabels(query, label6, 1);
+                while (reader.Read())
+                {
+                    listView1.Items.Add(reader.GetString(0));
+
+
+                }
             }
             catch (Exception ex)
             {
@@ -96,30 +115,6 @@ namespace Pizzería.Vistas
             }
         }
 
-        private void MostrarDatosLabels(string consultaSQL, Label label, int id)
-        {
-            try
-            {
-                comando.Parameters.Clear();
-                comando.CommandText = consultaSQL;
-                comando.Parameters.AddWithValue("@id", id);
-
-                List<string> ingredientes = new List<string>();
-
-                SqlDataReader reader = comando.ExecuteReader();
-                while (reader.Read())
-                {
-                    ingredientes.Add(reader["Nombre_ingrediente"].ToString());
-                }
-
-                label.Text = ingredientes.Count > 0 ? string.Join(", ", ingredientes) : "No disponible";
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al obtener los datos: " + ex.Message);
-            }
-        }
     }
 }
 

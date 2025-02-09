@@ -13,7 +13,7 @@ namespace Pizzería.Vistas
 {
     public partial class Pedido : Form
     {
-        SqlConnection conexion = new SqlConnection("Data Source=DESKTOP-1R0R5VE;Initial Catalog=pizzeria;Integrated Security=True;TrustServerCertificate=True;Encrypt=True;");
+        SqlConnection conexion = new SqlConnection(Program.url);
         SqlCommand comando = new SqlCommand();
 
         private List<String> labels = new List<string>();
@@ -42,17 +42,17 @@ namespace Pizzería.Vistas
 
                 
                 string query2 = "SELECT COUNT(pp.Id_PedidoPizza) FROM Pedido p JOIN PedidoPizza pp ON p.ID_Pedido = pp.Id_Pedido " +
-                                "WHERE p.id_usuario = @id AND p.ID_Pedido = (SELECT TOP 1 ID_Pedido " +
+                                "WHERE p.id_usuario = @id AND p.ID_Pedido = (SELECT MAX(ID_Pedido) " +
                                 "FROM Pedido WHERE id_usuario = @id);";
                 MostrarDatosLabels(query2, "Id_PedidoPizza", label_numpizzas, conexion);
 
                 
-                string query3 = "SELECT SUM(pi.Cantidad * i.Precio_ingrediente) AS PrecioFinal FROM Pedido p " +
+                string query3 = "SELECT SUM(pp.Cantidad * i.Precio_ingrediente) AS PrecioFinal FROM Pedido p " +
                                 "JOIN PedidoPizza pp ON p.ID_Pedido = pp.Id_Pedido JOIN Pizza pi ON pp.Id_Pizza = pi.ID " +
                                 "JOIN Pizza_Ingredientes p_ing ON pi.ID = p_ing.Id_pizza JOIN Ingredientes i ON " +
                                 "p_ing.Id_ingrediente = i.Id_Ingrediente WHERE p.id_usuario = @id " +
-                                "AND p.ID_Pedido = (SELECT TOP 1 ID_Pedido FROM Pedido WHERE id_usuario = " +
-                                "@id) ORDER BY Fecha DESC;";
+                                "AND p.ID_Pedido = (SELECT MAX(ID_Pedido) FROM Pedido WHERE id_usuario = " +
+                                "@id);";
                 MostrarDatosLabels(query3, "PrecioFinal", label_dinero, conexion);
             }
             catch (Exception ex)
@@ -83,8 +83,8 @@ namespace Pizzería.Vistas
 
                 if (reader.Read())
                 {
-                   
-                    label.Text = reader[columna].ToString();
+
+                    label.Text = reader[0].ToString();
                     String cadaLabel = label.Text;
 
                     labels.Add(cadaLabel);
@@ -110,8 +110,9 @@ namespace Pizzería.Vistas
 
         private void bt_seguirComprando_Click(object sender, EventArgs e)
         {
-            CrearPizza crearPizza = new CrearPizza();
+            Pizzeria crearPizza = new Pizzeria();
             crearPizza.Show();
+            this.Close();
         }
 
         private void bt_factura_Click(object sender, EventArgs e)
@@ -122,15 +123,15 @@ namespace Pizzería.Vistas
 
             if (tb_direccion.Text != "") { 
 
-                string tbdireccion = tb_direccion.Text.ToString();
+                string direccion = tb_direccion.Text.ToString();
 
                 conexion.Open();
                 comando.Connection = conexion;
-                comando.CommandText = "UPDATE [Pedido] SET [Direccion] = @direccion WHERE ID_Pedido = (SELECT TOP 1 ID_Pedido FROM Pedido WHERE " +
-                "id_usuario = @id ORDER BY Fecha DESC);";
+                comando.CommandText = "UPDATE [Pedido] SET [Direccion] = @direccion WHERE ID_Pedido = (SELECT MAX(ID_Pedido) FROM Pedido WHERE " +
+                "id_usuario = @id);";
 
                 comando.Parameters.Clear();
-                comando.Parameters.AddWithValue("@direccion", tbdireccion);
+                comando.Parameters.AddWithValue("@direccion", direccion);
                 comando.Parameters.AddWithValue("@id", UsuarioCache.id);
             
 
@@ -142,7 +143,7 @@ namespace Pizzería.Vistas
                 try
                 {
 
-                    string plantillaPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "excelfactura.xlsx");
+                    string plantillaPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\excelfactura.xlsx");
                     string destinoPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "FacturaGenerada.xlsx");
 
 
@@ -163,30 +164,18 @@ namespace Pizzería.Vistas
                 //#######################################################################################
 
                     comando.Parameters.Clear();
-                    comando.CommandText = "SELECT TOP 1 Direccion FROM Usuarios WHERE ID = @id ORDER BY Fecha DESC";
+                    comando.CommandText = "SELECT TOP 1 Fecha FROM Pedido WHERE id_usuario = 1 ORDER BY Fecha DESC";
                     comando.Parameters.AddWithValue("@id", UsuarioCache.id);
 
                     SqlDataReader reader = comando.ExecuteReader();
-                    String direccion = " ";
-
-                    if (reader.Read())
-                    {
-                        direccion = reader.GetString(0);
-
-                    }
-
-                    comando.Parameters.Clear();
-                    comando.CommandText = "SELECT TOP 1 Fecha FROM Pedido WHERE id_usuario = @id ORDER BY Fecha DESC";
-                    comando.Parameters.AddWithValue("@id", UsuarioCache.id);
-
-                    reader = comando.ExecuteReader();
                     String fecha = " ";
 
                     if (reader.Read())
                     {
-                        fecha = reader.GetString(0);
+                        fecha = reader[0].ToString();
 
                     }
+                    reader.Close();
 
                     comando.Parameters.Clear();
                     comando.CommandText = "SELECT P.Nombre FROM Pedido PD INNER JOIN Usuarios U ON PD.id_usuario = U.ID INNER JOIN PedidoPizza PP " +
@@ -207,6 +196,7 @@ namespace Pizzería.Vistas
                         
                         row++;
                     }
+                    reader.Close();
 
                     comando.Parameters.Clear();
                     comando.CommandText = "SELECT SUM(p_ing.Cantidad * i.Precio_ingrediente) FROM Pedido p INNER JOIN PedidoPizza pp " +
@@ -229,6 +219,7 @@ namespace Pizzería.Vistas
 
                         row++;
                     }
+                    reader.Close();
 
                     comando.Parameters.Clear();
                     comando.CommandText = "SELECT pp.Cantidad FROM Pedido p INNER JOIN PedidoPizza pp ON p.ID_Pedido = pp.Id_Pedido " +
@@ -249,9 +240,7 @@ namespace Pizzería.Vistas
 
                         row++;
                     }
-
-
-
+                    reader.Close();
 
 
                     //########################################################################################
@@ -281,6 +270,7 @@ namespace Pizzería.Vistas
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: " + ex.Message);
+                    conexion.Close();
                 }
             }
             else

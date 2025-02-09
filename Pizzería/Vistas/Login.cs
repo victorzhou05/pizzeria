@@ -15,7 +15,7 @@ namespace Pizzería.Vistas
 {
     public partial class Login : Form
     {
-        SqlConnection conexion = new SqlConnection("Data Source=DESKTOP-1R0R5VE;Initial Catalog=pizzeria;Integrated Security=True;TrustServerCertificate=True;Encrypt=True;");
+        SqlConnection conexion = new SqlConnection(Program.url);
         SqlCommand comando = new SqlCommand();
         public Login()
         {

@@ -22,12 +22,14 @@ namespace Pizzería.Vistas
         {
             CrearPizza crearPizza = new CrearPizza();
             crearPizza.Show();
+            this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             SeleccionarPizza seleccionaPizza = new SeleccionarPizza();
             seleccionaPizza.Show();
+            this.Close();
         }
     }
 }

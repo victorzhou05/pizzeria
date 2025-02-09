@@ -17,7 +17,7 @@ namespace Pizzería.Vistas
     {
 
       
-        String url = "Data Source=DESKTOP-1R0R5VE;Initial Catalog=pizzeria;Integrated Security=True;TrustServerCertificate=True;Encrypt=True;";
+        String url = Program.url;
 
         private string Masa;
         private string Tamano;
@@ -43,25 +43,28 @@ namespace Pizzería.Vistas
             insertarImagenes();
         }
 
+
         private void insertarImagenes()
         {
-            dictImagenes.Add("4Quesos", "C:\\Users\\saul\\Source\\Repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\4quesos.png");
-            dictImagenes.Add("Aceitunas", "C:\\Users\\saul\\Source\\Repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\aceitunas.png");
-            dictImagenes.Add("Atun", "C:\\Users\\saul\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\atun.png");
-            dictImagenes.Add("Cerdo", "C:\\Users\\saul\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\bacon.png");
-            dictImagenes.Add("Cebolla", "C:\\Users\\saul\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\cebolla.png");
-            dictImagenes.Add("Champinon", "C:\\Users\\saul\\Source\\Repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\champiñon.png");
-            dictImagenes.Add("Mozzarela", "C:\\Users\\saul\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\image.png");
-            dictImagenes.Add("Masa", "C:\\Users\\saul\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\masa.png");
-            dictImagenes.Add("Pimiento", "C:\\Users\\saul\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\pimiento.png");
-            dictImagenes.Add("Pollo", "C:\\Users\\saul\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\pollo.png");
-            dictImagenes.Add("Cheddar", "C:\\Users\\saul\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\quesCheddaro.png");
-            dictImagenes.Add("Suizo", "C:\\Users\\saul\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\quesoSuizo.png");
-            dictImagenes.Add("Barbacoa", "C:\\Users\\saul\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\salsaBarbacoa.png");
-            dictImagenes.Add("Carbonara", "C:\\Users\\saul\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\salsaCarbonara.png");
-            dictImagenes.Add("Tomate", "C:\\Users\\saul\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\salsaTomate.png");
-            dictImagenes.Add("Ternera", "C:\\Users\\saul\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\Ternera.png");
-            dictImagenes.Add("Pepperoni", "C:\\Users\\saul\\Source\\Repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\peperoni.png");
+            string ruta = "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\";
+
+            dictImagenes.Add("4Quesos", ruta + "4quesos.png");
+            dictImagenes.Add("Aceitunas", ruta + "aceitunas.png");
+            dictImagenes.Add("Atun", ruta + "atun.png");
+            dictImagenes.Add("Cerdo", ruta + "bacon.png");
+            dictImagenes.Add("Cebolla", ruta + "champiñon.png");
+            dictImagenes.Add("Mozzarela", ruta + "image.png");
+            dictImagenes.Add("Masa", ruta + "masa.png");
+            dictImagenes.Add("Pimiento", ruta + "pimiento.png");
+            dictImagenes.Add("Pollo", ruta + "pollo.png");
+            dictImagenes.Add("Cheddar", ruta + "quesCheddaro.png");
+            dictImagenes.Add("Suizo", ruta + "quesoSuizo.png");
+            dictImagenes.Add("Barbacoa", ruta + "salsaBarbacoa.png");
+            dictImagenes.Add("Carbonara", ruta + "salsaCarbonara.png");
+            dictImagenes.Add("Tomate", ruta + "salsaTomate.png");
+            dictImagenes.Add("Ternera", ruta + "Ternera.png");
+            dictImagenes.Add("Pepperoni", ruta + "peperoni.png");
+            dictImagenes.Add("Champinon", ruta + "champinon.png");
 
 
         }
@@ -206,6 +209,7 @@ namespace Pizzería.Vistas
             {
                 pizzaId = reader.GetInt32(0);
             }
+            reader.Close();
             
 
             comandosql.Parameters.Clear();
@@ -213,6 +217,7 @@ namespace Pizzería.Vistas
                 "VALUES ((SELECT MAX([ID_Pedido]) FROM [Pedido]), @idPizza, @cantidad)";
             comandosql.Parameters.AddWithValue("@idPizza", pizzaId);
             comandosql.Parameters.AddWithValue("@cantidad", 1);
+            comandosql.ExecuteNonQuery();
             conexion.Close();
 
 
