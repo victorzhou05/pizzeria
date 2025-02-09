@@ -14,7 +14,7 @@ namespace Pizzería.Vistas
 {
     public partial class Register : Form
     {
-        SqlConnection conexion = new SqlConnection("Data Source=DESKTOP-7E96FO2;Initial Catalog=Pizzeria;Persist Security Info=True;User ID=sa;Password=di2024;TrustServerCertificate=True;Encrypt=False;");
+        SqlConnection conexion = new SqlConnection(Program.url);
         SqlCommand comando = new SqlCommand();
         
         public Register()
@@ -267,6 +267,11 @@ namespace Pizzería.Vistas
             Form login = new Login();
             login.Show();
             this.Hide();
+        }
+
+        private void Register_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

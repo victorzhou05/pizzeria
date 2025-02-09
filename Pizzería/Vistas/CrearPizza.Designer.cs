@@ -580,6 +580,7 @@
             this.gbCompletar.TabIndex = 12;
             this.gbCompletar.TabStop = false;
             this.gbCompletar.Text = "Completar";
+            this.gbCompletar.Enter += new System.EventHandler(this.gbCompletar_Enter);
             // 
             // tbCompNombre
             // 

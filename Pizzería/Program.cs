@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
@@ -19,7 +20,9 @@ namespace Pizzería
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CrearPizza());
+            Application.Run(new Register());
         }
+
+        public static string url = "server=(local)\\SQLEXPRESS;database=master;Integrated Security = SSPI";
     }
 }

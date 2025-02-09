@@ -35,10 +35,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tbContraseña = new System.Windows.Forms.TextBox();
             this.tbMail = new System.Windows.Forms.RichTextBox();
+            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape6 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineShape5 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.btnLogin = new System.Windows.Forms.Button();
-            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizarLogin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinMaxLogin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrarLogin)).BeginInit();
@@ -50,9 +50,10 @@
             this.btnMinimizarLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMinimizarLogin.BackColor = System.Drawing.Color.Transparent;
             this.btnMinimizarLogin.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizarLogin.Image")));
-            this.btnMinimizarLogin.Location = new System.Drawing.Point(633, 12);
+            this.btnMinimizarLogin.Location = new System.Drawing.Point(844, 15);
+            this.btnMinimizarLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnMinimizarLogin.Name = "btnMinimizarLogin";
-            this.btnMinimizarLogin.Size = new System.Drawing.Size(39, 31);
+            this.btnMinimizarLogin.Size = new System.Drawing.Size(52, 38);
             this.btnMinimizarLogin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnMinimizarLogin.TabIndex = 15;
             this.btnMinimizarLogin.TabStop = false;
@@ -63,9 +64,10 @@
             this.btnMinMaxLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMinMaxLogin.BackColor = System.Drawing.Color.Transparent;
             this.btnMinMaxLogin.Image = ((System.Drawing.Image)(resources.GetObject("btnMinMaxLogin.Image")));
-            this.btnMinMaxLogin.Location = new System.Drawing.Point(678, 12);
+            this.btnMinMaxLogin.Location = new System.Drawing.Point(904, 15);
+            this.btnMinMaxLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnMinMaxLogin.Name = "btnMinMaxLogin";
-            this.btnMinMaxLogin.Size = new System.Drawing.Size(39, 31);
+            this.btnMinMaxLogin.Size = new System.Drawing.Size(52, 38);
             this.btnMinMaxLogin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnMinMaxLogin.TabIndex = 16;
             this.btnMinMaxLogin.TabStop = false;
@@ -76,9 +78,10 @@
             this.btnCerrarLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCerrarLogin.BackColor = System.Drawing.Color.Transparent;
             this.btnCerrarLogin.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrarLogin.Image")));
-            this.btnCerrarLogin.Location = new System.Drawing.Point(723, 12);
+            this.btnCerrarLogin.Location = new System.Drawing.Point(964, 15);
+            this.btnCerrarLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCerrarLogin.Name = "btnCerrarLogin";
-            this.btnCerrarLogin.Size = new System.Drawing.Size(39, 31);
+            this.btnCerrarLogin.Size = new System.Drawing.Size(52, 38);
             this.btnCerrarLogin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnCerrarLogin.TabIndex = 17;
             this.btnCerrarLogin.TabStop = false;
@@ -93,9 +96,10 @@
             this.panel1.Controls.Add(this.tbContraseña);
             this.panel1.Controls.Add(this.tbMail);
             this.panel1.Controls.Add(this.shapeContainer1);
-            this.panel1.Location = new System.Drawing.Point(178, 162);
+            this.panel1.Location = new System.Drawing.Point(237, 199);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(263, 88);
+            this.panel1.Size = new System.Drawing.Size(351, 108);
             this.panel1.TabIndex = 18;
             // 
             // tbContraseña
@@ -104,10 +108,11 @@
             this.tbContraseña.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbContraseña.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbContraseña.ForeColor = System.Drawing.Color.Gray;
-            this.tbContraseña.Location = new System.Drawing.Point(3, 40);
+            this.tbContraseña.Location = new System.Drawing.Point(4, 49);
+            this.tbContraseña.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbContraseña.Multiline = true;
             this.tbContraseña.Name = "tbContraseña";
-            this.tbContraseña.Size = new System.Drawing.Size(257, 34);
+            this.tbContraseña.Size = new System.Drawing.Size(343, 42);
             this.tbContraseña.TabIndex = 2;
             this.tbContraseña.Text = "Contraseña";
             this.tbContraseña.Enter += new System.EventHandler(this.tbContraseña_Enter);
@@ -120,12 +125,25 @@
             this.tbMail.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbMail.ForeColor = System.Drawing.Color.Gray;
             this.tbMail.Location = new System.Drawing.Point(0, 0);
+            this.tbMail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbMail.Name = "tbMail";
-            this.tbMail.Size = new System.Drawing.Size(259, 34);
+            this.tbMail.Size = new System.Drawing.Size(345, 42);
             this.tbMail.TabIndex = 1;
             this.tbMail.Text = "Correo Electronico";
             this.tbMail.Enter += new System.EventHandler(this.tbMail_Enter);
             this.tbMail.Leave += new System.EventHandler(this.tbMail_Leave);
+            // 
+            // shapeContainer1
+            // 
+            this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
+            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
+            this.shapeContainer1.Name = "shapeContainer1";
+            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.lineShape6,
+            this.lineShape5});
+            this.shapeContainer1.Size = new System.Drawing.Size(351, 108);
+            this.shapeContainer1.TabIndex = 14;
+            this.shapeContainer1.TabStop = false;
             // 
             // lineShape6
             // 
@@ -149,43 +167,34 @@
             this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(228)))), ((int)(((byte)(194)))));
             this.btnLogin.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.Gray;
-            this.btnLogin.Location = new System.Drawing.Point(268, 284);
+            this.btnLogin.Location = new System.Drawing.Point(357, 350);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(90, 34);
+            this.btnLogin.Size = new System.Drawing.Size(120, 42);
             this.btnLogin.TabIndex = 0;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
-            // shapeContainer1
-            // 
-            this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
-            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
-            this.shapeContainer1.Name = "shapeContainer1";
-            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.lineShape6,
-            this.lineShape5});
-            this.shapeContainer1.Size = new System.Drawing.Size(263, 88);
-            this.shapeContainer1.TabIndex = 14;
-            this.shapeContainer1.TabStop = false;
-            // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnCerrarLogin);
             this.Controls.Add(this.btnMinMaxLogin);
             this.Controls.Add(this.btnMinimizarLogin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Login";
             this.Text = "Login";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Login_Load);
             this.SizeChanged += new System.EventHandler(this.Login_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizarLogin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinMaxLogin)).EndInit();

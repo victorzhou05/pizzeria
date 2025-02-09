@@ -15,7 +15,7 @@ namespace Pizzería.Vistas
 {
     public partial class Login : Form
     {
-        SqlConnection conexion = new SqlConnection("Data Source=DESKTOP-7E96FO2;Initial Catalog=Pizzeria;Persist Security Info=True;User ID=sa;Password=di2024;TrustServerCertificate=True;Encrypt=False;");
+        SqlConnection conexion = new SqlConnection(Program.url);
         SqlCommand comando = new SqlCommand();
         public Login()
         {
@@ -122,6 +122,9 @@ namespace Pizzería.Vistas
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            
+
+
             conexion.Open();
             comando.Connection = conexion;
             comando.CommandText = "SELECT * FROM [Usuarios]";
@@ -132,8 +135,11 @@ namespace Pizzería.Vistas
                 Usuario usuario = new Usuario();
                 usuario.id = sqlReader.GetInt32(0);
                 usuario.nombre = sqlReader.GetString(1);
-                usuario.apellido1 = sqlReader.GetString(2);
-                usuario.apellido2 = sqlReader.GetString(3);
+                usuario.apellido1 = apellidos[0];
+                if (apellidos.Length > 1)
+                {
+                usuario.apellido2 = apellidos[1];
+                }
                 usuario.correo=sqlReader.GetString(4);
                 usuario.telefono=sqlReader.GetString(5);
                 usuario.contraseña=sqlReader.GetString(6);
@@ -157,12 +163,35 @@ namespace Pizzería.Vistas
                     Form pizzeria = new Pizzeria();
                     pizzeria.Show();
                     this.Hide();
-                }          
+
+                    DateTime fechaActual = DateTime.Now;
+                    conexion.Open();
+                    comando.Connection = conexion;
+                    comando.CommandText = "INSERT INTO [Pedido] ([id_usuario],[Fecha],[PrecioFinal],[Estado]) VALUES" +
+                        " (@id,@fecha,@preciofinal,@estado)";
+
+                    comando.Parameters.Clear();
+                    comando.Parameters.AddWithValue("@id", user.id);
+                    comando.Parameters.AddWithValue("@fecha", fechaActual);
+                    comando.Parameters.AddWithValue("@precioFinal", 0);
+                    comando.Parameters.AddWithValue("@estado", "En preparación");
+
+                    comando.ExecuteNonQuery();
+                    conexion.Close();
+
+                }
+                          
+
             }
             if (acceso==false)
             {
                 MessageBox.Show("Correo o Contraseña Incorrectos");
             }
+
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
 
         }
     }

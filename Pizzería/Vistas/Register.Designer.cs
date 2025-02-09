@@ -60,9 +60,10 @@
             this.tbNombre.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbNombre.ForeColor = System.Drawing.Color.Gray;
             this.tbNombre.Location = new System.Drawing.Point(0, 0);
+            this.tbNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbNombre.Name = "tbNombre";
             this.tbNombre.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.tbNombre.Size = new System.Drawing.Size(97, 34);
+            this.tbNombre.Size = new System.Drawing.Size(129, 42);
             this.tbNombre.TabIndex = 2;
             this.tbNombre.Text = "Nombre";
             this.tbNombre.Enter += new System.EventHandler(this.tbNombre_Enter);
@@ -74,9 +75,10 @@
             this.tbApellidos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbApellidos.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbApellidos.ForeColor = System.Drawing.Color.Gray;
-            this.tbApellidos.Location = new System.Drawing.Point(103, 0);
+            this.tbApellidos.Location = new System.Drawing.Point(137, 0);
+            this.tbApellidos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbApellidos.Name = "tbApellidos";
-            this.tbApellidos.Size = new System.Drawing.Size(183, 34);
+            this.tbApellidos.Size = new System.Drawing.Size(244, 42);
             this.tbApellidos.TabIndex = 7;
             this.tbApellidos.Text = "Apellidos";
             this.tbApellidos.Enter += new System.EventHandler(this.tbApellidos_Enter);
@@ -88,9 +90,10 @@
             this.tbMail.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbMail.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbMail.ForeColor = System.Drawing.Color.Gray;
-            this.tbMail.Location = new System.Drawing.Point(3, 80);
+            this.tbMail.Location = new System.Drawing.Point(4, 98);
+            this.tbMail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbMail.Name = "tbMail";
-            this.tbMail.Size = new System.Drawing.Size(275, 34);
+            this.tbMail.Size = new System.Drawing.Size(367, 42);
             this.tbMail.TabIndex = 14;
             this.tbMail.Text = "Correo Electronico";
             this.tbMail.Enter += new System.EventHandler(this.tbMail_Enter);
@@ -102,9 +105,10 @@
             this.tbTelefono.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbTelefono.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbTelefono.ForeColor = System.Drawing.Color.Gray;
-            this.tbTelefono.Location = new System.Drawing.Point(0, 40);
+            this.tbTelefono.Location = new System.Drawing.Point(0, 49);
+            this.tbTelefono.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbTelefono.Name = "tbTelefono";
-            this.tbTelefono.Size = new System.Drawing.Size(112, 34);
+            this.tbTelefono.Size = new System.Drawing.Size(149, 42);
             this.tbTelefono.TabIndex = 9;
             this.tbTelefono.Text = "Telefono";
             this.tbTelefono.Enter += new System.EventHandler(this.tbTelefono_Enter);
@@ -122,9 +126,10 @@
             this.panel1.Controls.Add(this.tbTelefono);
             this.panel1.Controls.Add(this.tbMail);
             this.panel1.Controls.Add(this.shapeContainer1);
-            this.panel1.Location = new System.Drawing.Point(171, 148);
+            this.panel1.Location = new System.Drawing.Point(228, 182);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(281, 124);
+            this.panel1.Size = new System.Drawing.Size(375, 153);
             this.panel1.TabIndex = 11;
             // 
             // tbContraseña
@@ -133,10 +138,11 @@
             this.tbContraseña.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbContraseña.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbContraseña.ForeColor = System.Drawing.Color.Gray;
-            this.tbContraseña.Location = new System.Drawing.Point(118, 40);
+            this.tbContraseña.Location = new System.Drawing.Point(157, 49);
+            this.tbContraseña.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbContraseña.Multiline = true;
             this.tbContraseña.Name = "tbContraseña";
-            this.tbContraseña.Size = new System.Drawing.Size(160, 34);
+            this.tbContraseña.Size = new System.Drawing.Size(213, 42);
             this.tbContraseña.TabIndex = 13;
             this.tbContraseña.Text = "Contraseña";
             this.tbContraseña.Enter += new System.EventHandler(this.tbContraseña_Enter);
@@ -154,7 +160,7 @@
             this.lineShape3,
             this.lineShape2,
             this.lineShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(281, 124);
+            this.shapeContainer1.Size = new System.Drawing.Size(375, 153);
             this.shapeContainer1.TabIndex = 11;
             this.shapeContainer1.TabStop = false;
             // 
@@ -212,9 +218,10 @@
             this.btnRegistrarse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(228)))), ((int)(((byte)(194)))));
             this.btnRegistrarse.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrarse.ForeColor = System.Drawing.Color.Gray;
-            this.btnRegistrarse.Location = new System.Drawing.Point(303, 307);
+            this.btnRegistrarse.Location = new System.Drawing.Point(404, 378);
+            this.btnRegistrarse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnRegistrarse.Name = "btnRegistrarse";
-            this.btnRegistrarse.Size = new System.Drawing.Size(125, 33);
+            this.btnRegistrarse.Size = new System.Drawing.Size(167, 41);
             this.btnRegistrarse.TabIndex = 0;
             this.btnRegistrarse.Text = "Registrarse";
             this.btnRegistrarse.UseVisualStyleBackColor = false;
@@ -225,9 +232,10 @@
             this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCerrar.BackColor = System.Drawing.Color.Transparent;
             this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
-            this.btnCerrar.Location = new System.Drawing.Point(727, 12);
+            this.btnCerrar.Location = new System.Drawing.Point(969, 15);
+            this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(39, 31);
+            this.btnCerrar.Size = new System.Drawing.Size(52, 38);
             this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnCerrar.TabIndex = 13;
             this.btnCerrar.TabStop = false;
@@ -238,9 +246,10 @@
             this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMinimizar.BackColor = System.Drawing.Color.Transparent;
             this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
-            this.btnMinimizar.Location = new System.Drawing.Point(629, 12);
+            this.btnMinimizar.Location = new System.Drawing.Point(839, 15);
+            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Size = new System.Drawing.Size(39, 31);
+            this.btnMinimizar.Size = new System.Drawing.Size(52, 38);
             this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnMinimizar.TabIndex = 14;
             this.btnMinimizar.TabStop = false;
@@ -251,9 +260,10 @@
             this.btnMinMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMinMax.BackColor = System.Drawing.Color.Transparent;
             this.btnMinMax.Image = ((System.Drawing.Image)(resources.GetObject("btnMinMax.Image")));
-            this.btnMinMax.Location = new System.Drawing.Point(674, 12);
+            this.btnMinMax.Location = new System.Drawing.Point(899, 15);
+            this.btnMinMax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnMinMax.Name = "btnMinMax";
-            this.btnMinMax.Size = new System.Drawing.Size(39, 31);
+            this.btnMinMax.Size = new System.Drawing.Size(52, 38);
             this.btnMinMax.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnMinMax.TabIndex = 15;
             this.btnMinMax.TabStop = false;
@@ -264,9 +274,10 @@
             this.linkLabelYaTienesCuenta.AutoSize = true;
             this.linkLabelYaTienesCuenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(228)))), ((int)(((byte)(194)))));
             this.linkLabelYaTienesCuenta.Font = new System.Drawing.Font("MV Boli", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabelYaTienesCuenta.Location = new System.Drawing.Point(190, 304);
+            this.linkLabelYaTienesCuenta.Location = new System.Drawing.Point(253, 374);
+            this.linkLabelYaTienesCuenta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabelYaTienesCuenta.Name = "linkLabelYaTienesCuenta";
-            this.linkLabelYaTienesCuenta.Size = new System.Drawing.Size(93, 10);
+            this.linkLabelYaTienesCuenta.Size = new System.Drawing.Size(116, 13);
             this.linkLabelYaTienesCuenta.TabIndex = 16;
             this.linkLabelYaTienesCuenta.TabStop = true;
             this.linkLabelYaTienesCuenta.Text = "¿YA TIENES CUENTA?";
@@ -274,12 +285,12 @@
             // 
             // Register
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.linkLabelYaTienesCuenta);
             this.Controls.Add(this.btnMinMax);
             this.Controls.Add(this.btnMinimizar);
@@ -287,9 +298,11 @@
             this.Controls.Add(this.btnRegistrarse);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Register";
             this.Text = "Register";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Register_Load);
             this.SizeChanged += new System.EventHandler(this.Register_SizeChanged);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
