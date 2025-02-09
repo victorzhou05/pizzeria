@@ -39,6 +39,7 @@ namespace Pizzería.Vistas
                 string query1 = "SELECT TOP 1 ID_Pedido FROM Pedido WHERE id_usuario = @id " +
                                 "ORDER BY Fecha DESC;";
                 MostrarDatosLabels(query1, "ID_pedido", label_numped, conexion);
+                
 
                 
                 string query2 = "SELECT COUNT(pp.Id_PedidoPizza) FROM Pedido p JOIN PedidoPizza pp ON p.ID_Pedido = pp.Id_Pedido " +
@@ -54,6 +55,7 @@ namespace Pizzería.Vistas
                                 "AND p.ID_Pedido = (SELECT MAX(ID_Pedido) FROM Pedido WHERE id_usuario = " +
                                 "@id);";
                 MostrarDatosLabels(query3, "PrecioFinal", label_dinero, conexion);
+                label_dinero.Text += "€";
             }
             catch (Exception ex)
             {
@@ -143,7 +145,7 @@ namespace Pizzería.Vistas
                 try
                 {
 
-                    string plantillaPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "C:\\Users\\10407\\source\\repos\\victorzhou05\\pizzeria\\Pizzería\\excelfactura.xlsx");
+                    string plantillaPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "C:\\Users\\10407\\Source\\Repos\\pizzeria\\Pizzería\\excelfactura.xlsx");
                     string destinoPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "FacturaGenerada.xlsx");
 
 
@@ -179,7 +181,7 @@ namespace Pizzería.Vistas
 
                     comando.Parameters.Clear();
                     comando.CommandText = "SELECT P.Nombre FROM Pedido PD INNER JOIN Usuarios U ON PD.id_usuario = U.ID INNER JOIN PedidoPizza PP " +
-                        "ON PD.ID_Pedido = PP.Id_Pedido INNER JOIN Pizza P ON PP.Id_Pizza = P.ID WHERE U.ID = @id;";
+                        "ON PD.ID_Pedido = PP.Id_Pedido INNER JOIN Pizza P ON PP.Id_Pizza = P.ID WHERE PD.Id_pedido = (SELECT MAX(ID_Pedido) FROM Pedido WHERE id_usuario = @id)";
                     comando.Parameters.AddWithValue("@id", UsuarioCache.id);
 
                     reader = comando.ExecuteReader();
@@ -188,10 +190,7 @@ namespace Pizzería.Vistas
                     while (reader.Read())
                     {
                         
-                        string nombrePizza = reader.GetString(0);
-
-                        
-                        hoja.Cells[row, 3].Value = nombrePizza;
+                        hoja.Cells[row, 3].Value = reader.GetString(0);
 
                         
                         row++;
@@ -202,7 +201,7 @@ namespace Pizzería.Vistas
                     comando.CommandText = "SELECT SUM(p_ing.Cantidad * i.Precio_ingrediente) FROM Pedido p INNER JOIN PedidoPizza pp " +
                         "ON p.ID_Pedido = pp.Id_Pedido INNER JOIN Pizza pi ON pp.Id_Pizza = pi.ID INNER JOIN Pizza_Ingredientes p_ing " +
                         "ON pi.ID = p_ing.Id_pizza INNER JOIN Ingredientes i ON p_ing.Id_ingrediente = i.Id_Ingrediente " +
-                        "WHERE p.id_usuario = @id AND p.ID_Pedido = (SELECT TOP 1 ID_Pedido FROM Pedido WHERE id_usuario = @id ORDER BY Fecha DESC) GROUP BY pp.Id_Pizza;";
+                        "WHERE p.id_usuario = @id AND p.ID_Pedido = (SELECT MAX(ID_Pedido) FROM Pedido WHERE id_usuario = @id) GROUP BY pp.Id_Pizza;";
                     comando.Parameters.AddWithValue("@id", UsuarioCache.id);
 
                     reader = comando.ExecuteReader();
@@ -211,10 +210,7 @@ namespace Pizzería.Vistas
                     while (reader.Read())
                     {
 
-                        string precio = reader.GetString(0);
-
-
-                        hoja.Cells[row, 4].Value = precio;
+                        hoja.Cells[row, 4].Value = reader.GetDecimal(0);
 
 
                         row++;
@@ -232,10 +228,7 @@ namespace Pizzería.Vistas
                     while (reader.Read())
                     {
 
-                        string unidad = reader.GetString(0);
-
-
-                        hoja.Cells[row, 5].Value = unidad;
+                        hoja.Cells[row, 5].Value = reader.GetInt32(0);
 
 
                         row++;
