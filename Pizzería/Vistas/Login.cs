@@ -133,7 +133,6 @@ namespace Pizzería.Vistas
             while (sqlReader.Read())
             {
                 Usuario usuario = new Usuario();
-                String[] apellidos= sqlReader.GetString(2).Split(' ');
                 usuario.id = sqlReader.GetInt32(0);
                 usuario.nombre = sqlReader.GetString(1);
                 usuario.apellido1 = apellidos[0];
@@ -165,8 +164,6 @@ namespace Pizzería.Vistas
                     pizzeria.Show();
                     this.Hide();
 
-                    
-
                     DateTime fechaActual = DateTime.Now;
                     conexion.Open();
                     comando.Connection = conexion;
@@ -184,6 +181,7 @@ namespace Pizzería.Vistas
 
                 }
                           
+
             }
             if (acceso==false)
             {
