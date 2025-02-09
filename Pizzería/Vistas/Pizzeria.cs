@@ -12,6 +12,7 @@ namespace Pizzería.Vistas
 {
     public partial class Pizzeria : Form
     {
+
         public Pizzeria()
         {
             InitializeComponent();
@@ -19,7 +20,14 @@ namespace Pizzería.Vistas
 
         private void button2_Click(object sender, EventArgs e)
         {
+            CrearPizza crearPizza = new CrearPizza();
+            crearPizza.Show();
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SeleccionarPizza seleccionaPizza = new SeleccionarPizza();
+            seleccionaPizza.Show();
         }
     }
 }

@@ -122,6 +122,9 @@ namespace Pizzería.Vistas
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            
+
+
             conexion.Open();
             comando.Connection = conexion;
             comando.CommandText = "SELECT * FROM [Usuarios]";
@@ -161,6 +164,24 @@ namespace Pizzería.Vistas
                     Form pizzeria = new Pizzeria();
                     pizzeria.Show();
                     this.Hide();
+
+                    
+
+                    DateTime fechaActual = DateTime.Now;
+                    conexion.Open();
+                    comando.Connection = conexion;
+                    comando.CommandText = "INSERT INTO [Pedido] ([id_usuario],[Fecha],[PrecioFinal],[Estado]) VALUES" +
+                        " (@id,@fecha,@preciofinal,@estado)";
+
+                    comando.Parameters.Clear();
+                    comando.Parameters.AddWithValue("@id", user.id);
+                    comando.Parameters.AddWithValue("@fecha", fechaActual);
+                    comando.Parameters.AddWithValue("@precioFinal", 0);
+                    comando.Parameters.AddWithValue("@estado", "En preparación");
+
+                    comando.ExecuteNonQuery();
+                    conexion.Close();
+
                 }
                           
             }

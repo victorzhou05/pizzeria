@@ -40,11 +40,13 @@
             this.label_numped = new System.Windows.Forms.Label();
             this.label_numpizzas = new System.Windows.Forms.Label();
             this.label_dinero = new System.Windows.Forms.Label();
+            this.label_direccion = new System.Windows.Forms.Label();
+            this.tb_direccion = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // bt_factura
             // 
-            this.bt_factura.Location = new System.Drawing.Point(472, 338);
+            this.bt_factura.Location = new System.Drawing.Point(489, 338);
             this.bt_factura.Name = "bt_factura";
             this.bt_factura.Size = new System.Drawing.Size(141, 78);
             this.bt_factura.TabIndex = 0;
@@ -126,7 +128,7 @@
             // 
             this.label_euro.AutoSize = true;
             this.label_euro.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_euro.Location = new System.Drawing.Point(202, 263);
+            this.label_euro.Location = new System.Drawing.Point(175, 263);
             this.label_euro.Name = "label_euro";
             this.label_euro.Size = new System.Drawing.Size(28, 25);
             this.label_euro.TabIndex = 10;
@@ -162,11 +164,30 @@
             this.label_dinero.TabIndex = 13;
             this.label_dinero.Text = "0";
             // 
+            // label_direccion
+            // 
+            this.label_direccion.AutoSize = true;
+            this.label_direccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_direccion.Location = new System.Drawing.Point(375, 278);
+            this.label_direccion.Name = "label_direccion";
+            this.label_direccion.Size = new System.Drawing.Size(170, 20);
+            this.label_direccion.TabIndex = 14;
+            this.label_direccion.Text = "Dirección de entrega:";
+            // 
+            // tb_direccion
+            // 
+            this.tb_direccion.Location = new System.Drawing.Point(561, 278);
+            this.tb_direccion.Name = "tb_direccion";
+            this.tb_direccion.Size = new System.Drawing.Size(168, 22);
+            this.tb_direccion.TabIndex = 15;
+            // 
             // Pedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.tb_direccion);
+            this.Controls.Add(this.label_direccion);
             this.Controls.Add(this.label_dinero);
             this.Controls.Add(this.label_numpizzas);
             this.Controls.Add(this.label_numped);
@@ -201,5 +222,7 @@
         private System.Windows.Forms.Label label_numped;
         private System.Windows.Forms.Label label_numpizzas;
         private System.Windows.Forms.Label label_dinero;
+        private System.Windows.Forms.Label label_direccion;
+        private System.Windows.Forms.TextBox tb_direccion;
     }
 }

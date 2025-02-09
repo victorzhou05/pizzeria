@@ -15,8 +15,10 @@ namespace Pizzería.Vistas
 {
     public partial class CrearPizza : Form
     {
-        String url = "server=(local)\\SQLEXPRESS;database=master;Integrated Security = SSPI";
-        
+
+      
+        String url = "Data Source=DESKTOP-1R0R5VE;Initial Catalog=pizzeria;Integrated Security=True;TrustServerCertificate=True;Encrypt=True;";
+
         private string Masa;
         private string Tamano;
         private Dictionary<string, int> ingrBase;
@@ -30,7 +32,7 @@ namespace Pizzería.Vistas
         }
         private void CrearPizza_Load(object sender, EventArgs e)
         {
-         
+
             gbBase.Visible = true;
             gbIngredientes.Visible = false;
             gbCompletar.Visible = false;
@@ -43,23 +45,23 @@ namespace Pizzería.Vistas
 
         private void insertarImagenes()
         {
-            dictImagenes.Add("4Quesos", "C:\\Users\\10407\\Source\\Repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\4quesos.png");
-            dictImagenes.Add("Aceitunas", "C:\\Users\\10407\\Source\\Repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\aceitunas.png");
-            dictImagenes.Add("Atun", "C:\\Users\\10407\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\atun.png");
-            dictImagenes.Add("Cerdo", "C:\\Users\\10407\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\bacon.png");
-            dictImagenes.Add("Cebolla", "C:\\Users\\10407\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\cebolla.png");
-            dictImagenes.Add("Champinon", "C:\\Users\\10407\\Source\\Repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\champiñon.png");
-            dictImagenes.Add("Mozzarela", "C:\\Users\\10407\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\image.png");
-            dictImagenes.Add("Masa", "C:\\Users\\10407\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\masa.png");
-            dictImagenes.Add("Pimiento", "C:\\Users\\10407\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\pimiento.png");
-            dictImagenes.Add("Pollo", "C:\\Users\\10407\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\pollo.png");
-            dictImagenes.Add("Cheddar", "C:\\Users\\10407\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\quesCheddaro.png");
-            dictImagenes.Add("Suizo", "C:\\Users\\10407\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\quesoSuizo.png");
-            dictImagenes.Add("Barbacoa", "C:\\Users\\10407\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\salsaBarbacoa.png");
-            dictImagenes.Add("Carbonara", "C:\\Users\\10407\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\salsaCarbonara.png");
-            dictImagenes.Add("Tomate", "C:\\Users\\10407\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\salsaTomate.png");
-            dictImagenes.Add("Ternera", "C:\\Users\\10407\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\Ternera.png");
-            dictImagenes.Add("Pepperoni", "C:\\Users\\10407\\Source\\Repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\peperoni.png");
+            dictImagenes.Add("4Quesos", "C:\\Users\\saul\\Source\\Repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\4quesos.png");
+            dictImagenes.Add("Aceitunas", "C:\\Users\\saul\\Source\\Repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\aceitunas.png");
+            dictImagenes.Add("Atun", "C:\\Users\\saul\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\atun.png");
+            dictImagenes.Add("Cerdo", "C:\\Users\\saul\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\bacon.png");
+            dictImagenes.Add("Cebolla", "C:\\Users\\saul\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\cebolla.png");
+            dictImagenes.Add("Champinon", "C:\\Users\\saul\\Source\\Repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\champiñon.png");
+            dictImagenes.Add("Mozzarela", "C:\\Users\\saul\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\image.png");
+            dictImagenes.Add("Masa", "C:\\Users\\saul\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\masa.png");
+            dictImagenes.Add("Pimiento", "C:\\Users\\saul\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\pimiento.png");
+            dictImagenes.Add("Pollo", "C:\\Users\\saul\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\pollo.png");
+            dictImagenes.Add("Cheddar", "C:\\Users\\saul\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\quesCheddaro.png");
+            dictImagenes.Add("Suizo", "C:\\Users\\saul\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\quesoSuizo.png");
+            dictImagenes.Add("Barbacoa", "C:\\Users\\saul\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\salsaBarbacoa.png");
+            dictImagenes.Add("Carbonara", "C:\\Users\\saul\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\salsaCarbonara.png");
+            dictImagenes.Add("Tomate", "C:\\Users\\saul\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\salsaTomate.png");
+            dictImagenes.Add("Ternera", "C:\\Users\\saul\\source\\repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\Ternera.png");
+            dictImagenes.Add("Pepperoni", "C:\\Users\\saul\\Source\\Repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\peperoni.png");
 
 
         }
@@ -80,10 +82,10 @@ namespace Pizzería.Vistas
             gbIngredientes.Visible = true;
         }
 
-        
+
         private void btnIngrSig_Click(object sender, EventArgs e)
         {
-            
+
             lvCarnes.Clear();
             lvVerduras.Clear();
 
@@ -116,7 +118,7 @@ namespace Pizzería.Vistas
 
             gbIngredientes.Visible = false;
             gbCompletar.Visible = true;
-            
+
         }
 
         private void btnMasaSig_Click(object sender, EventArgs e)
@@ -131,7 +133,7 @@ namespace Pizzería.Vistas
                 return;
             }
 
-            
+
 
             lvBase.Clear();
             lvBase.Items.Add("Tamaño: " + cbTamano.Text);
@@ -149,7 +151,7 @@ namespace Pizzería.Vistas
                     string ingredientes = par.Key + ": " + par.Value;
                     lvBase.Items.Add(ingredientes);
                     g.DrawImage(Image.FromFile(dictImagenes[par.Key]), 0, 0);
-                    
+
                 }
             }
 
@@ -162,7 +164,7 @@ namespace Pizzería.Vistas
         {
             SqlConnection conexion = new SqlConnection(url);
             SqlCommand comandosql = new SqlCommand();
-           // SqlTransaction mitransaccion;
+            // SqlTransaction mitransaccion;
             String nombre = tbCompNombre.Text;
 
             if (buscarNombreRepetido(nombre))
@@ -173,22 +175,25 @@ namespace Pizzería.Vistas
 
             //Insertar los datos en la base de datos
             conexion.Open();
-           // mitransaccion = conexion.BeginTransaction();
+            // mitransaccion = conexion.BeginTransaction();
             try
             {
-            comandosql.Connection = conexion;
-           // comandosql.Transaction = mitransaccion;
-            comandosql.CommandText = "INSERT INTO Pizza (Nombre, Tamano) VALUES (@nombre, @tamano)";
+                comandosql.Connection = conexion;
+                // comandosql.Transaction = mitransaccion;
+                comandosql.CommandText = "INSERT INTO Pizza (Nombre, Tamano) VALUES (@nombre, @tamano)";
 
-            comandosql.Parameters.AddWithValue("@nombre", nombre);
-            comandosql.Parameters.AddWithValue("@tamano", this.Tamano);
+                comandosql.Parameters.AddWithValue("@nombre", nombre);
+                comandosql.Parameters.AddWithValue("@tamano", this.Tamano);
 
-            comandosql.ExecuteNonQuery();
-           // mitransaccion.Commit();
+                comandosql.ExecuteNonQuery();
 
-            }catch(Exception ex)
+
+                // mitransaccion.Commit();
+
+            }
+            catch (Exception ex)
             {
-          //      mitransaccion.Rollback();
+                //      mitransaccion.Rollback();
             }
 
             comandosql.Parameters.Clear();
@@ -201,15 +206,21 @@ namespace Pizzería.Vistas
             {
                 pizzaId = reader.GetInt32(0);
             }
+            
+
+            comandosql.Parameters.Clear();
+            comandosql.CommandText = "INSERT INTO [PedidoPizza] ([Id_Pedido],[Id_Pizza],[Cantidad]) " +
+                "VALUES ((SELECT MAX([ID_Pedido]) FROM [Pedido]), @idPizza, @cantidad)";
+            comandosql.Parameters.AddWithValue("@idPizza", pizzaId);
+            comandosql.Parameters.AddWithValue("@cantidad", 1);
             conexion.Close();
 
-            
-            
+
             foreach (KeyValuePair<string, int> par in ingrBase)
             {
                 conexion.Open();
-            //    SqlTransaction transaccionIngr = conexion.BeginTransaction();
-            //    comandosql.Transaction = mitransaccion;
+                //    SqlTransaction transaccionIngr = conexion.BeginTransaction();
+                //    comandosql.Transaction = mitransaccion;
 
                 int id = obtenerIdIngrediente(par.Key);
                 int cantidad = par.Value;
@@ -220,7 +231,7 @@ namespace Pizzería.Vistas
                 comandosql.Parameters.AddWithValue("@idIngrediente", id);
                 comandosql.Parameters.AddWithValue("@Cantidad", cantidad);
                 comandosql.ExecuteNonQuery();
-              //  transaccionIngr.Commit();
+                //  transaccionIngr.Commit();
                 conexion.Close();
             }
 
@@ -261,7 +272,8 @@ namespace Pizzería.Vistas
                 //  transaccionIngr.Commit();
                 conexion.Close();
             }
-
+            Pedido pedido = new Pedido();
+            pedido.Show();
 
             this.Close();
         }
@@ -286,7 +298,7 @@ namespace Pizzería.Vistas
             int id = 0;
             conexion.Open();
             //mitransaccion = conexion.BeginTransaction();
-            
+
             comandosql.Connection = conexion;
             //comandosql.Transaction = mitransaccion;
             comandosql.CommandText = "SELECT Id_Ingrediente from Ingredientes where Nombre_ingrediente = @nombre";
@@ -300,7 +312,7 @@ namespace Pizzería.Vistas
             }
             reader.Close();
             conexion.Close();
-           // mitransaccion.Commit();
+            // mitransaccion.Commit();
 
             return id;
         }
@@ -309,18 +321,18 @@ namespace Pizzería.Vistas
         {
             SqlConnection conn = new SqlConnection(url);
             SqlCommand comando = new SqlCommand();
-           // SqlTransaction mitransaccion;
+            // SqlTransaction mitransaccion;
 
             conn.Open();
-           // mitransaccion = conn.BeginTransaction();
+            // mitransaccion = conn.BeginTransaction();
 
             comando.Connection = conn;
-           // comando.Transaction = mitransaccion;
+            // comando.Transaction = mitransaccion;
             comando.CommandText = "SELECT * from Pizza where Nombre = @nombre";
             comando.Parameters.AddWithValue("@nombre", nombre);
 
             SqlDataReader reader = comando.ExecuteReader();
-           // mitransaccion.Commit();
+            // mitransaccion.Commit();
             if (reader.Read())
             {
                 reader.Close();
@@ -334,8 +346,9 @@ namespace Pizzería.Vistas
 
         private void ModificarIngrediente(Dictionary<string, int> dic, string ingrediente, bool incrementar, Label label)
         {
-            
-            if (dic.ContainsKey(ingrediente)){
+
+            if (dic.ContainsKey(ingrediente))
+            {
                 int numero = int.Parse(label.Text);
                 if (incrementar)
                 {
@@ -436,8 +449,9 @@ namespace Pizzería.Vistas
             ModificarIngrediente(ingrBase, "Suizo", false, labelSuizo);
         }
 
-        private void btnSuizoMas_Click(object sender, EventArgs e) { 
-        
+        private void btnSuizoMas_Click(object sender, EventArgs e)
+        {
+
             ModificarIngrediente(ingrBase, "Suizo", true, labelSuizo);
         }
 
@@ -534,6 +548,11 @@ namespace Pizzería.Vistas
         }
 
         private void gbBase_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gbCompletar_Enter(object sender, EventArgs e)
         {
 
         }
