@@ -133,6 +133,7 @@ namespace Pizzería.Vistas
             while (sqlReader.Read())
             {
                 Usuario usuario = new Usuario();
+                String[] apellidos = sqlReader.GetString(2).Split(' ');
                 usuario.id = sqlReader.GetInt32(0);
                 usuario.nombre = sqlReader.GetString(1);
                 usuario.apellido1 = apellidos[0];
