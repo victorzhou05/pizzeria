@@ -46,7 +46,7 @@ namespace Pizzería.Vistas
 
         private void insertarImagenes()
         {
-            string ruta = "C:\\Users\\10407\\Source\\Repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\";
+            string ruta = "C:\\Users\\franc\\Source\\Repos\\pizzeriaDefinitiva\\Pizzería\\Recursos\\Ingredientes\\";
 
             dictImagenes.Add("4Quesos", ruta + "4quesos.png");
             dictImagenes.Add("Aceitunas", ruta + "aceitunas.png");

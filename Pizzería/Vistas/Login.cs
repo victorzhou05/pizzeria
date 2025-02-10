@@ -133,14 +133,12 @@ namespace Pizzería.Vistas
             while (sqlReader.Read())
             {
                 Usuario usuario = new Usuario();
-                String[] apellidos = sqlReader.GetString(2).Split(' ');
+                
                 usuario.id = sqlReader.GetInt32(0);
                 usuario.nombre = sqlReader.GetString(1);
-                usuario.apellido1 = apellidos[0];
-                if (apellidos.Length > 1)
-                {
-                usuario.apellido2 = apellidos[1];
-                }
+                usuario.apellido1 = sqlReader.GetString(2);
+                usuario.apellido2 = sqlReader.GetString(3);
+
                 usuario.correo=sqlReader.GetString(4);
                 usuario.telefono=sqlReader.GetString(5);
                 usuario.contraseña=sqlReader.GetString(6);
@@ -166,20 +164,25 @@ namespace Pizzería.Vistas
                     this.Hide();
 
                     DateTime fechaActual = DateTime.Now;
-                    conexion.Open();
-                    comando.Connection = conexion;
-                    comando.CommandText = "INSERT INTO [Pedido] ([id_usuario],[Fecha],[PrecioFinal],[Estado]) VALUES" +
-                        " (@id,@fecha,@preciofinal,@estado)";
+                    try
+                    {
+                        conexion.Open();
+                        comando.Connection = conexion;
+                        comando.CommandText = "INSERT INTO [Pedido] ([id_usuario],[Fecha],[PrecioFinal],[Estado]) VALUES" +
+                            " (@id,@fecha,@preciofinal,@estado)";
 
-                    comando.Parameters.Clear();
-                    comando.Parameters.AddWithValue("@id", user.id);
-                    comando.Parameters.AddWithValue("@fecha", fechaActual);
-                    comando.Parameters.AddWithValue("@precioFinal", 0);
-                    comando.Parameters.AddWithValue("@estado", "En preparación");
+                        comando.Parameters.Clear();
+                        comando.Parameters.AddWithValue("@id", user.id);
+                        comando.Parameters.AddWithValue("@fecha", fechaActual);
+                        comando.Parameters.AddWithValue("@precioFinal", 0);
+                        comando.Parameters.AddWithValue("@estado", "En preparación");
 
-                    comando.ExecuteNonQuery();
-                    conexion.Close();
-
+                        comando.ExecuteNonQuery();
+                        conexion.Close();
+                    }
+                    catch (Exception ex) {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
                           
 
