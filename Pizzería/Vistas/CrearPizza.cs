@@ -143,7 +143,7 @@ namespace Pizzería.Vistas
             lvBase.Items.Add("Masa: " + cbMasa.Text);
 
 
-            Image imgMasa = Image.FromFile(dictImagenes["Masa"]);
+            xºImage imgMasa = Image.FromFile(dictImagenes["Masa"]);
             this.pizzaBase = new Bitmap(imgMasa.Width, imgMasa.Height);
 
             using (Graphics g = Graphics.FromImage(this.pizzaBase))

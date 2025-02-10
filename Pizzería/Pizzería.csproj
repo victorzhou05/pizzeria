@@ -217,6 +217,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Recursos\CartelPizzeria.jpg" />
+    <Content Include="Recursos\IconosIngr\IconoAceitunas.png" />
+    <Content Include="Recursos\IconosIngr\IconoAtun.png" />
+    <Content Include="Recursos\IconosIngr\IconoBacon.png" />
+    <Content Include="Recursos\IconosIngr\IconoCebolla.png" />
+    <Content Include="Recursos\IconosIngr\IconoChampinon.png" />
+    <Content Include="Recursos\IconosIngr\IconoPepperoni.png" />
+    <Content Include="Recursos\IconosIngr\IconoPimiento.png" />
+    <Content Include="Recursos\IconosIngr\IconoPollo.png" />
+    <Content Include="Recursos\IconosIngr\IconoTernera.png" />
     <Content Include="Recursos\Ingredientes\4quesos.png" />
     <Content Include="Recursos\Ingredientes\aceitunas.png" />
     <Content Include="Recursos\Ingredientes\atun.png" />
