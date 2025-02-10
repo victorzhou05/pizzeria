@@ -37,7 +37,7 @@ namespace Pizzería.Vistas
 
         private void Pizzeria_Load(object sender, EventArgs e)
         {
-           
+
         }
     }
 }
