@@ -13,6 +13,7 @@ namespace Pizzería.Vistas
 {
     public partial class Pedido : Form
     {
+        decimal precioFinal;
         SqlConnection conexion = new SqlConnection(Program.url);
         SqlCommand comando = new SqlCommand();
 
@@ -33,11 +34,10 @@ namespace Pizzería.Vistas
         {
             try
             {
-                conexion.Open();  
+                conexion.Open();
 
-                
-                string query1 = "SELECT TOP 1 ID_Pedido FROM Pedido WHERE id_usuario = @id " +
-                                "ORDER BY Fecha DESC;";
+
+                string query1 = "SELECT MAX(ID_Pedido) FROM Pedido WHERE id_usuario = @id;";
                 MostrarDatosLabels(query1, "ID_pedido", label_numped, conexion);
                 
 
@@ -48,13 +48,14 @@ namespace Pizzería.Vistas
                 MostrarDatosLabels(query2, "Id_PedidoPizza", label_numpizzas, conexion);
 
                 
-                string query3 = "SELECT SUM(pp.Cantidad * i.Precio_ingrediente) AS PrecioFinal FROM Pedido p " +
+                string query3 = "SELECT SUM(pp.Cantidad * (i.Precio_ingrediente * p_ing.Cantidad)) AS PrecioFinal FROM Pedido p " +
                                 "JOIN PedidoPizza pp ON p.ID_Pedido = pp.Id_Pedido JOIN Pizza pi ON pp.Id_Pizza = pi.ID " +
                                 "JOIN Pizza_Ingredientes p_ing ON pi.ID = p_ing.Id_pizza JOIN Ingredientes i ON " +
                                 "p_ing.Id_ingrediente = i.Id_Ingrediente WHERE p.id_usuario = @id " +
                                 "AND p.ID_Pedido = (SELECT MAX(ID_Pedido) FROM Pedido WHERE id_usuario = " +
                                 "@id);";
                 MostrarDatosLabels(query3, "PrecioFinal", label_dinero, conexion);
+                precioFinal = decimal.Parse(label_dinero.Text);
                 label_dinero.Text += "€";
             }
             catch (Exception ex)
@@ -129,23 +130,31 @@ namespace Pizzería.Vistas
 
                 conexion.Open();
                 comando.Connection = conexion;
-                comando.CommandText = "UPDATE [Pedido] SET [Direccion] = @direccion WHERE ID_Pedido = (SELECT MAX(ID_Pedido) FROM Pedido WHERE " +
+                comando.CommandText = "UPDATE [Pedido] SET [Direccion] = @direccion, [PrecioFinal] = @precioFinal, [Estado] = 'Pedido' WHERE ID_Pedido = (SELECT MAX(ID_Pedido) FROM Pedido WHERE " +
                 "id_usuario = @id);";
 
                 comando.Parameters.Clear();
                 comando.Parameters.AddWithValue("@direccion", direccion);
+                comando.Parameters.AddWithValue("@precioFinal", precioFinal);
+
                 comando.Parameters.AddWithValue("@id", UsuarioCache.id);
             
 
                 comando.ExecuteNonQuery();
-                
 
+                comando.CommandText = "DELETE FROM [PedidoPizza] WHERE [Id_Pedido] IN (SELECT ID_Pedido from [Pedido] WHERE [Estado] = 'En preparación');";
+                comando.Parameters.Clear();
+                comando.ExecuteNonQuery();
+
+                comando.CommandText = "DELETE FROM [Pedido] WHERE [Estado] = 'En preparación';";
+                comando.Parameters.Clear();
+                comando.ExecuteNonQuery();
 
             
                 try
                 {
 
-                    string plantillaPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "C:\\Users\\10407\\Source\\Repos\\pizzeria\\Pizzería\\excelfactura.xlsx");
+                    string plantillaPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "C:\\Users\\franc\\source\\repos\\pizzeriaDefinitiva\\Pizzería\\excelfactura.xlsx");
                     string destinoPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "FacturaGenerada.xlsx");
 
 
@@ -269,8 +278,12 @@ namespace Pizzería.Vistas
             else
             {
                 MessageBox.Show("Escriba su dirección para continuar");
+                return;
             }
             conexion.Close();
+            Form menuinicial = new menuInicial();
+            menuinicial.Show();
+            this.Close();
             
         }
 

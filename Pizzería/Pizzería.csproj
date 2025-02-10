@@ -64,11 +64,41 @@
     <Compile Include="Vistas\Cuenta.Designer.cs">
       <DependentUpon>Cuenta.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\FormAdministrador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\FormAdministrador.Designer.cs">
+      <DependentUpon>FormAdministrador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\FormMenuInfoUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\FormMenuInfoUsuario.Designer.cs">
+      <DependentUpon>FormMenuInfoUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\formMenuMiCuenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\formMenuMiCuenta.Designer.cs">
+      <DependentUpon>formMenuMiCuenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\formMenuPedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\formMenuPedidos.Designer.cs">
+      <DependentUpon>formMenuPedidos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\Login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Vistas\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\menuInicial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\menuInicial.Designer.cs">
+      <DependentUpon>menuInicial.cs</DependentUpon>
     </Compile>
     <Compile Include="Vistas\Pedido.cs">
       <SubType>Form</SubType>
@@ -109,8 +139,23 @@
     <EmbeddedResource Include="Vistas\Cuenta.resx">
       <DependentUpon>Cuenta.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\FormAdministrador.resx">
+      <DependentUpon>FormAdministrador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\FormMenuInfoUsuario.resx">
+      <DependentUpon>FormMenuInfoUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\formMenuMiCuenta.resx">
+      <DependentUpon>formMenuMiCuenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\formMenuPedidos.resx">
+      <DependentUpon>formMenuPedidos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\menuInicial.resx">
+      <DependentUpon>menuInicial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Pedido.resx">
       <DependentUpon>Pedido.cs</DependentUpon>

@@ -23,6 +23,7 @@ namespace Pizzería
             Application.Run(new Register());
         }
 
-        public static string url = "server=(local)\\SQLEXPRESS;database=master;Integrated Security = SSPI";
+        public static string url = "Data Source=pc-fran;Initial Catalog=pizzeriaDefinitiva;Integrated Security=True;TrustServerCertificate=True";
+
     }
 }

@@ -66,6 +66,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Pizzeria";
             this.Text = "Pizzeria";
+            this.Load += new System.EventHandler(this.Pizzeria_Load);
             this.ResumeLayout(false);
 
         }

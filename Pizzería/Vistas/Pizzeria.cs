@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Pizzería.Modelo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,7 +14,8 @@ namespace Pizzería.Vistas
 {
     public partial class Pizzeria : Form
     {
-
+        SqlConnection conexion = new SqlConnection(Program.url);
+        SqlCommand comando = new SqlCommand();
         public Pizzeria()
         {
             InitializeComponent();
@@ -30,6 +33,11 @@ namespace Pizzería.Vistas
             SeleccionarPizza seleccionaPizza = new SeleccionarPizza();
             seleccionaPizza.Show();
             this.Close();
+        }
+
+        private void Pizzeria_Load(object sender, EventArgs e)
+        {
+           
         }
     }
 }
