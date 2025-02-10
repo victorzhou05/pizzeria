@@ -18,6 +18,7 @@ namespace Pizzería.Vistas
         SqlCommand comando = new SqlCommand();
 
         private List<String> labels = new List<string>();
+        private int idPedido = 0;
 
          
         public Pedido()
@@ -39,6 +40,7 @@ namespace Pizzería.Vistas
 
                 string query1 = "SELECT MAX(ID_Pedido) FROM Pedido WHERE id_usuario = @id;";
                 MostrarDatosLabels(query1, "ID_pedido", label_numped, conexion);
+                idPedido = int.Parse(labels[0]);
                 
 
                 
@@ -190,9 +192,9 @@ namespace Pizzería.Vistas
 
                     comando.Parameters.Clear();
                     comando.CommandText = "SELECT P.Nombre FROM Pedido PD INNER JOIN Usuarios U ON PD.id_usuario = U.ID INNER JOIN PedidoPizza PP " +
-                        "ON PD.ID_Pedido = PP.Id_Pedido INNER JOIN Pizza P ON PP.Id_Pizza = P.ID WHERE PD.Id_pedido = (SELECT MAX(ID_Pedido) FROM Pedido WHERE id_usuario = @id)";
+                        "ON PD.ID_Pedido = PP.Id_Pedido INNER JOIN Pizza P ON PP.Id_Pizza = P.ID WHERE PD.Id_pedido = @idPedido";
                     comando.Parameters.AddWithValue("@id", UsuarioCache.id);
-
+                    comando.Parameters.AddWithValue("@idPedido", idPedido);
                     reader = comando.ExecuteReader();
                     int row = 14; 
 
@@ -210,9 +212,9 @@ namespace Pizzería.Vistas
                     comando.CommandText = "SELECT SUM(p_ing.Cantidad * i.Precio_ingrediente) FROM Pedido p INNER JOIN PedidoPizza pp " +
                         "ON p.ID_Pedido = pp.Id_Pedido INNER JOIN Pizza pi ON pp.Id_Pizza = pi.ID INNER JOIN Pizza_Ingredientes p_ing " +
                         "ON pi.ID = p_ing.Id_pizza INNER JOIN Ingredientes i ON p_ing.Id_ingrediente = i.Id_Ingrediente " +
-                        "WHERE p.id_usuario = @id AND p.ID_Pedido = (SELECT MAX(ID_Pedido) FROM Pedido WHERE id_usuario = @id) GROUP BY pp.Id_Pizza;";
+                        "WHERE p.id_usuario = @id AND p.ID_Pedido = @idPedido GROUP BY pp.Id_Pizza;";
                     comando.Parameters.AddWithValue("@id", UsuarioCache.id);
-
+                    comando.Parameters.AddWithValue("@idPedido", idPedido);
                     reader = comando.ExecuteReader();
                     row = 14;
 
@@ -228,9 +230,9 @@ namespace Pizzería.Vistas
 
                     comando.Parameters.Clear();
                     comando.CommandText = "SELECT pp.Cantidad FROM Pedido p INNER JOIN PedidoPizza pp ON p.ID_Pedido = pp.Id_Pedido " +
-                        "WHERE p.id_usuario = @id AND p.ID_Pedido = (SELECT TOP 1 ID_Pedido FROM Pedido WHERE id_usuario = @id ORDER BY Fecha DESC);";
+                        "WHERE p.id_usuario = @id AND p.ID_Pedido = @idPedido;";
                     comando.Parameters.AddWithValue("@id", UsuarioCache.id);
-
+                    comando.Parameters.AddWithValue("@idPedido", idPedido);
                     reader = comando.ExecuteReader();
                     row = 14;
 
@@ -290,6 +292,12 @@ namespace Pizzería.Vistas
         private void label_pedido_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnPizzas_Click(object sender, EventArgs e)
+        {
+            VerPizzas pizzas = new VerPizzas(idPedido);
+            pizzas.Show();
         }
     }
 }

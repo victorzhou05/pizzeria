@@ -124,6 +124,12 @@
     <Compile Include="Vistas\SeleccionarPizza.Designer.cs">
       <DependentUpon>SeleccionarPizza.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\VerPizzas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\VerPizzas.Designer.cs">
+      <DependentUpon>VerPizzas.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -171,6 +177,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\SeleccionarPizza.resx">
       <DependentUpon>SeleccionarPizza.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\VerPizzas.resx">
+      <DependentUpon>VerPizzas.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="excelfactura.xlsx" />
     <None Include="Properties\Settings.settings">

@@ -46,7 +46,7 @@ namespace Pizzería.Vistas
 
         private void insertarImagenes()
         {
-            string ruta = "C:\\Users\\franc\\Source\\Repos\\pizzeriaDefinitiva\\Pizzería\\Recursos\\Ingredientes\\";
+            string ruta = "C:\\Users\\10407\\Source\\Repos\\pizzeria\\Pizzería\\Recursos\\Ingredientes\\";
 
             dictImagenes.Add("4Quesos", ruta + "4quesos.png");
             dictImagenes.Add("Aceitunas", ruta + "aceitunas.png");
@@ -143,7 +143,7 @@ namespace Pizzería.Vistas
             lvBase.Items.Add("Masa: " + cbMasa.Text);
 
 
-            xºImage imgMasa = Image.FromFile(dictImagenes["Masa"]);
+            Image imgMasa = Image.FromFile(dictImagenes["Masa"]);
             this.pizzaBase = new Bitmap(imgMasa.Width, imgMasa.Height);
 
             using (Graphics g = Graphics.FromImage(this.pizzaBase))
