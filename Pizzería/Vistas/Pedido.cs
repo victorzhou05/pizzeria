@@ -145,7 +145,7 @@ namespace Pizzería.Vistas
                 try
                 {
 
-                    string plantillaPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "C:\\Users\\10407\\Source\\Repos\\pizzeria\\Pizzería\\excelfactura.xlsx");
+                    string plantillaPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "C:\\Users\\franc\\source\\repos\\pizzeriaDefinitiva\\Pizzería\\excelfactura.xlsx");
                     string destinoPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "FacturaGenerada.xlsx");
 
 

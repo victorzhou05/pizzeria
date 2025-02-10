@@ -31,5 +31,16 @@ namespace Pizzería.Vistas
             seleccionaPizza.Show();
             this.Close();
         }
+
+        private void Pizzeria_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bt_infoUsuario_Click(object sender, EventArgs e)
+        {
+            FormMenuInfoUsuario form = new FormMenuInfoUsuario();
+            form.ShowDialog();
+        }
     }
 }
