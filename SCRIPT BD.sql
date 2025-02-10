@@ -80,12 +80,12 @@ INSERT INTO Ingredientes (Id_ingrediente, Nombre_ingrediente, Precio_ingrediente
 INSERT INTO Ingredientes (Id_ingrediente, Nombre_ingrediente, Precio_ingrediente) VALUES (10, 'Cerdo', 4.3)
 INSERT INTO Ingredientes (Id_ingrediente, Nombre_ingrediente, Precio_ingrediente) VALUES (11, 'Atun', 3)
 INSERT INTO Ingredientes (Id_ingrediente, Nombre_ingrediente, Precio_ingrediente) VALUES (12, 'Pepperoni', 2.3)
-INSERT INTO Ingredientes (Id_ingrediente, Nombre_ingrediente, Precio_ingrediente) VALUES (13, 'Champiñon', 1.6)
+INSERT INTO Ingredientes (Id_ingrediente, Nombre_ingrediente, Precio_ingrediente) VALUES (13, 'Champinon', 1.6)
 INSERT INTO Ingredientes (Id_ingrediente, Nombre_ingrediente, Precio_ingrediente) VALUES (14, 'Cebolla', 2.1)
 INSERT INTO Ingredientes (Id_ingrediente, Nombre_ingrediente, Precio_ingrediente) VALUES (15, 'Aceitunas', 2.5)
-INSERT INTO Ingredientes (Id_ingrediente, Nombre_ingrediente, Precio_ingrediente) VALUES (16, 'Pimieneto', 1.1)
+INSERT INTO Ingredientes (Id_ingrediente, Nombre_ingrediente, Precio_ingrediente) VALUES (16, 'Pimiento', 1.1)
 
-INSERT INTO Usuarios (Nombre,Apellido1,Apellido2,Correo,Telefono,Contrasena,Rol) VALUES('admin','admin','admin','admin@gmail.com','123456789','admin','admin')
+INSERT INTO Usuarios (Nombre,Apellido1,Apellido2,Correo,Telefono,Contrasena,Rol) VALUES('admin','admin','admin','admin@gmail.com','123456789','CinA5MJWDvBTvOJSvluE4g==','admin')
 
 INSERT INTO Pizza (Nombre, Tamano) VALUES ('4 Quesos', 'Mediana')
 INSERT INTO Pizza_Ingredientes (Id_pizza, Id_ingrediente, Cantidad) VALUES (1, 7, 1)
